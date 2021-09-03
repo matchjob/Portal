@@ -1,0 +1,81 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="InconsistentLineSeparators" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="LongLine" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="ProblematicWhitespace" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="PyAugmentAssignmentInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true" />
+    <inspection_tool class="PyClassicStyleClassInspection" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="PyCompatibilityInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ourVersions">
+        <value>
+          <list size="2">
+            <item index="0" class="java.lang.String" itemvalue="2.7" />
+            <item index="1" class="java.lang.String" itemvalue="3.10" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyMissingOrEmptyDocstringInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true" />
+    <inspection_tool class="PyMissingTypeHintsInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true" />
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredPackages">
+        <value>
+          <list size="8">
+            <item index="0" class="java.lang.String" itemvalue="protobuf" />
+            <item index="1" class="java.lang.String" itemvalue="six" />
+            <item index="2" class="java.lang.String" itemvalue="google-auth-oauthlib" />
+            <item index="3" class="java.lang.String" itemvalue="google-auth-httplib2" />
+            <item index="4" class="java.lang.String" itemvalue="httplib2" />
+            <item index="5" class="java.lang.String" itemvalue="google-api-python-client" />
+            <item index="6" class="java.lang.String" itemvalue="google-auth" />
+            <item index="7" class="java.lang.String" itemvalue="Pillow" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyPep8Inspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredErrors">
+        <list>
+          <option value="E501" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="dreams.models.Driver_Group.objects" />
+          <option value="dreams.models.Driver_Type.objects" />
+          <option value="dreams.models.Activity.objects" />
+          <option value="dim.models.Drivers.objects" />
+          <option value="dim.models.DriverTMS.objects" />
+          <option value="dim.models.Operation_Type.objects" />
+          <option value="dim.models.Group.objects" />
+          <option value="dim.models.DriverERP.objects" />
+          <option value="dim.models.DriverVehicle.objects" />
+          <option value="dreams.models.DreamsEventsTMS.objects" />
+          <option value="dreams.models.DreamEvents.objects" />
+          <option value="dreams.models.DreamEventsTimeline.objects" />
+          <option value="dreams.models.DreamMonitorCurrent.objects" />
+          <option value="dreams.models.Driver.objects" />
+          <option value="supervisor.models.IntranetLog.objects" />
+          <option value="travels.models.Travels.objects" />
+          <option value="travels.models.TravelsDriver.objects" />
+          <option value="dim.models.ArrivalTime.objects" />
+          <option value="dreams.models.VehiclesCellPhones.objects" />
+          <option value="meraki_logsys.models.VehiclesCellphones.objects" />
+          <option value="dim.models.Vehicles.objects" />
+          <option value="dreams.models.SemaphoreCurrent.objects" />
+          <option value="dreams.models.CellPhonesLines.objects" />
+          <option value="*.objects" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="SpellCheckingInspection" enabled="false" level="TYPO" enabled_by_default="false">
+      <option name="processCode" value="true" />
+      <option name="processLiterals" value="true" />
+      <option name="processComments" value="true" />
+    </inspection_tool>
+    <inspection_tool class="UnusedDefine" enabled="true" level="WARNING" enabled_by_default="true" />
+  </profile>
+</component>
