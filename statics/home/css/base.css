@@ -1,0 +1,21 @@
+#header img{
+    width: 30px;;
+}
+
+.usr_image img{
+    width: 30px;;
+}
+.usr_image2 img{
+    width: 80px;
+}
+
+.dropdown-item.active, .dropdown-item:active {
+    color: #fff;
+    background-color: #fff;
+}s
+
+.navbar-badge{font-size:.6rem;font-weight:300;padding:2px 4px;position:absolute;right:5px;top:9px; color:red;
+background-color: blueviolet!important;
+}
+
+

@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     #apps
     'users.apps.UsersConfig',
     'profiles.apps.ProfilesConfig',
+    'home.apps.HomeConfig',
     #django
     'rest_framework',
     'rest_framework.authtoken',
@@ -69,7 +70,7 @@ ROOT_URLCONF = 'ApiMatchJob.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -137,7 +138,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/statics/'
+
+
+STATICFILES_DIRS = [
+    BASE_DIR / "statics",
+    '/var/www/static/',
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
