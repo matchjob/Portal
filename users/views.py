@@ -1,40 +1,43 @@
-# Django Rest Framework
-
-from rest_framework.decorators import api_view, action
-from rest_framework.authtoken.models import Token
-from rest_framework.response import Response
-from rest_framework.permissions import IsAuthenticated
-from rest_framework import viewsets
-#django
-from django.contrib.auth.models import User
-from django.contrib.auth.hashers import check_password
+# django
+from django.views.generic import TemplateView
+from django.shortcuts import render
 
 
-@api_view(['POST'])
-def login(request):
-    """Login de API"""
-    username = request.POST.get('username')
-    password = request.POST.get('password')
-    try:
-        user = User.objects.get(username=username)
-    except User.DoesNotExist:
-        return Response('Usuario Invalido')
-
-    pwd_valid = check_password(password, user.password)
-
-    if not pwd_valid:
-        return Response('Contraseña Invalida')
-
-    token, create = Token.objects.get_or_create(user=user)
-
-    return Response(token.key)
+class UsersHomePage(TemplateView):
+    """Pagina Principal"""
+    template_name = "users/home.html"
+    def get_context_data(self, **kwargs):
+        menu_dict = dict()
+        return menu_dict
 
 
-class ElementViewSet(viewsets.ModelViewSet):
-    """test"""
-    queryset = User.objects.values()
-    permission_classes = [IsAuthenticated]
+class UsersPerfilPage(TemplateView):
+    """Pagina Principal"""
+    template_name = "users/perfil.html"
+    def get_context_data(self, **kwargs):
+        args = dict()
+        return args
 
-    def list(self, request):
-        queryset = User.objects.values()
-        return Response(queryset)
+
+class UsersHVPage(TemplateView):
+    """Pagina Principal"""
+    template_name = "users/hoja_vida.html"
+    def get_context_data(self, **kwargs):
+        args = dict()
+        return args
+
+
+class UsersMatchPage(TemplateView):
+    """Pagina Principal"""
+    template_name = "users/match_realizados.html"
+    def get_context_data(self, **kwargs):
+        args = dict()
+        return args
+
+
+class UsersTestPage(TemplateView):
+    """Pagina Principal"""
+    template_name = "users/test.html"
+    def get_context_data(self, **kwargs):
+        args = dict()
+        return args

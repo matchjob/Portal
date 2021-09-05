@@ -2,23 +2,38 @@
 
 # Django
 from django.urls import path
-from rest_framework.routers import DefaultRouter
 
 # View
 from users import views
-from .views import ElementViewSet
 
-router = DefaultRouter()
-router.register(r'testroute', ElementViewSet)
 
-urlpatterns = router.urls
-
-urlpatterns += [
+urlpatterns = [
 
     # Management
     path(
-        route='login/',
-        view=views.login,
-        name='login'
+        route='UsersHomePage',
+        view=views.UsersHomePage.as_view(),
+        name='UsersHomePage'
     ),
+    path(
+        route='UsersPerfilPage',
+        view=views.UsersPerfilPage.as_view(),
+        name='UsersPerfilPage'
+    ),
+    path(
+        route='UsersHVPage',
+        view=views.UsersHVPage.as_view(),
+        name='UsersHVPage'
+    ),
+    path(
+        route='UsersMatchPage',
+        view=views.UsersMatchPage.as_view(),
+        name='UsersMatchPage'
+    ),
+    path(
+        route='UsersTestPage',
+        view=views.UsersTestPage.as_view(),
+        name='UsersTestPage'
+    ),
+
 ]

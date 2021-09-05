@@ -8,11 +8,19 @@ from home import views
 
 
 urlpatterns = [
-
-    # Management
     path(
         route='',
         view=views.HomePage.as_view(),
         name='HomePage'
+    ),
+    path(
+        route='login/',
+        view=views.home_login,
+        name='login'
+    ),
+    path(
+        route='logout/',
+        view=views.home_logout,
+        name='logout'
     ),
 ]

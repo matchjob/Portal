@@ -16,7 +16,7 @@
     <nav id="header" class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
       <div class="container-fluid">
             <a class="navbar-brand" href="#">
-                 <img src="{% static 'home/images/logo.png' %}" alt="logo"> Match Job
+                 <img src="{% static 'images/logoMJ.png' %}" class="rounded-circle" width="80px" height="80px" /> Match Job
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
@@ -40,7 +40,7 @@
                   <a class="nav-link" href="#contacto">Contacto</a>
                 </li>
                 <li class="nav-item ">
-                  <a class="nav-link text-matchjob" data-toggle="modal" href="#modallogin">Iniciar Sesion</a>
+                  <a class="nav-link btn bg-mj-v text-dark" href="{% url 'home:login' %}" >Iniciar Sesion</a>
                 </li>
 
               </ul>

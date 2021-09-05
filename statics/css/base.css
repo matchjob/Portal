@@ -1,0 +1,36 @@
+.bg-mj-v {
+  background-color: #92fc69 !important;
+}
+
+.bg-mj-a {
+  background-color: #7c9afb !important;
+}
+
+
+.text-mjv{
+    color:  #92fc69 !important;
+}
+
+.text-mja{
+    color:  #f8f9fa !important;
+}
+
+.btn-outline-mjv {
+  color: #f8f9fa;
+  border-color: #92fc69;
+}
+
+.btn-outline-mjv:hover {
+  color: black;
+  background-color: #92fc69 !important;
+}
+
+.btn-outline-mja {
+  color: #7c9afb;
+  border-color: #7c9afb;
+}
+
+.btn-outline-mja:hover {
+  color: black;
+  background-color: #7c9afb !important;
+}
