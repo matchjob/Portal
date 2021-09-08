@@ -22,4 +22,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(('home.urls', 'home'), namespace='home')),
     path('users/', include(('users.urls', 'users'), namespace='users')),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    path('company/', include(('company.urls', 'company'), namespace='company')),
+
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

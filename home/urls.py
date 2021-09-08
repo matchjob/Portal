@@ -23,4 +23,9 @@ urlpatterns = [
         view=views.home_logout,
         name='logout'
     ),
+    path(
+        route='signup/',
+        view=views.signup,
+        name='signup'
+    ),
 ]

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Profile, UserSoftSkills, UserSkills, UserLanguages
+from .models import *
 
 # Register your models here.
 admin.site.register(Profile)

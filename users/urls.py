@@ -17,7 +17,7 @@ urlpatterns = [
     ),
     path(
         route='UsersPerfilPage',
-        view=views.UsersPerfilPage.as_view(),
+        view=views.users_perfil_page,
         name='UsersPerfilPage'
     ),
     path(
@@ -34,6 +34,23 @@ urlpatterns = [
         route='UsersTestPage',
         view=views.UsersTestPage.as_view(),
         name='UsersTestPage'
+    ),
+    path(
+        route='add_skill',
+        view=views.add_skill,
+        name='add_skill'
+    ),
+
+    path(
+        route='add_soft_skill',
+        view=views.add_soft_skill,
+        name='add_soft_skill'
+    ),
+
+    path(
+        route='add_language',
+        view=views.add_language,
+        name='add_language'
     ),
 
 ]

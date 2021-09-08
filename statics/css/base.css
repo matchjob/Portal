@@ -12,7 +12,7 @@
 }
 
 .text-mja{
-    color:  #f8f9fa !important;
+    color:  #7c9afb !important;
 }
 
 .btn-outline-mjv {
@@ -33,4 +33,18 @@
 .btn-outline-mja:hover {
   color: black;
   background-color: #7c9afb !important;
+}
+
+.loader-page {
+  position: fixed;
+  z-index: 25000;
+  background: rgba(0,0,0, 0.4);
+  left: 0px;
+  top: 0px;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:all .3s ease;
 }

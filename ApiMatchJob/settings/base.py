@@ -35,11 +35,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    #apps
+    # apps
+
     'users.apps.UsersConfig',
     'profiles.apps.ProfilesConfig',
     'home.apps.HomeConfig',
-    #django
+    'company.apps.CompanyConfig',
+    
+    # django
+    
     'rest_framework',
     'rest_framework.authtoken',
 
@@ -60,7 +64,9 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+
     ]
 }
 
@@ -120,11 +126,14 @@ USE_L10N = True
 
 USE_TZ = True
 
-
+LOGIN_URL = '/home/login'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 STATIC_ROOT = BASE_PROJECT / 'staticfiles'
 STATIC_URL = '/statics/'
+
+MEDIA_ROOT = BASE_PROJECT / 'media'
+MEDIA_URL = '/media/'
 
 STATICFILES_DIRS = [
     BASE_PROJECT / "statics",

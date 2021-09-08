@@ -1,0 +1,106 @@
+{% extends 'company/base_company.html' %}
+ {% load static %}
+ {% block container %}
+ <div class="row justify-content-md-center bg-light">
+    <div class="col-6 p-4 text-white bg-dark" id="profile-box">
+      <div class="row">
+        <div class="col-12">
+          <h1 class="text-mjv text-center">Perfil</h1>
+        </div>        
+      </div>
+        
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            {% if form.errors %}
+                    <p>{{ form.errors }}</p>
+            {% endif %}
+            
+            <div class="media">
+                {% if user.profilecompany.picture %}
+                  <img src="{{ user.profilecompany.picture.url }}" class="rounded-circle" width="100px" height="auto" />
+                {% else%}
+                  <img src="{% static 'images/profile.png' %}" class="rounded-circle" width="100px" height="auto" />
+                {% endif %}
+
+                <div class="media-body">
+                    <h5 class="ml-4 text-mja">@{{ user.username }} | {{ user.profilecompany.comercial_name }}</h5>
+                    <input type="file" class="form-control" name="picture">
+                </div>
+            </div>            
+
+            <div class="form-group">
+                <label>Biography</label>
+                <textarea class="form-control" id="biography" name="biography">{{ user.profilecompany.biography }}</textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Phone number</label>
+                <input class="form-control" type="text" id="phone_number" name="phone_number" value="{{ user.profilecompany.phone_number }}"/>
+            </div>
+
+            <div class="form-group">
+                <label>Website</label>
+                <input type="url"  class="form-control" id="web_site" name="web_site" value="{{ user.profilecompany.web_site }}"></input>
+            </div>
+
+            <input type="hidden"  id="lat" name="lat" value="{{ user.profilecompany.lat }}" >
+            <input type="hidden"  id="lon" name="lon" value="{{ user.profilecompany.lon }}" >
+          
+            <div class="row mt-3">
+                <div class="col-12">
+                    <p class="btn btn-outline-mja" id="location-button" onclick="get_cordenates()">Obtener Zona</p>    
+                </div>
+                <div class="col-12">
+                    {%if map %}
+                    <h5 id='ubicacion_obtenida' style="display: block;"><span id='ubicacion_obtenida_text'>Zona </span> <a id="output" href='{{map}}' target="_blank" >mapa</a> </h5>
+                    {% else %}
+                    <h5 id='ubicacion_obtenida' style="display: none;"><span id='ubicacion_obtenida_text'>Zona Actualizada </span> <a id="output" href="#" target="_blank" >mapa</a> </h5>
+                    {% endif %}
+                </div>        
+            </div>
+            
+            <div class="row justify-content-end">
+              <div class="col align-self-end offset-9">
+                <button type="submit" class="btn btn-outline-mja btn-block mt-5 ">Actualizar Perfil</button>
+              </div>
+            </div>
+            
+        </form>
+    </div>
+</div>
+
+
+
+<script>
+    function get_cordenates(){
+        document.getElementById("ubicacion_obtenida").style.display = "none";
+        var lat;
+        var lon;
+        var options = {
+              enableHighAccuracy: true,
+              timeout: 5000,
+              maximumAge: 0
+            };
+        function success(position) {
+          lat = position.coords.latitude;
+          lon = position.coords.longitude;
+          var map_url = "https://www.google.com.mx/maps/@" + lat + "," + lon + "z";
+          document.getElementById('lat').value = lat;
+          document.getElementById('lon').value = lon;
+          document.getElementById("ubicacion_obtenida").style.display = "block";
+          document.getElementById("ubicacion_obtenida_text").innerHTML = 'Zona Actualizada';
+          document.getElementById('output').removeAttribute('href');
+          document.getElementById('output').setAttribute('href', map_url);
+        };
+
+        function error(err) {
+          console.warn('ERROR(' + err.code + '): ' + err.message);
+        };
+
+        navigator.geolocation.getCurrentPosition(success, error, options);     
+    }
+
+</script>
+
+ {% endblock%}  
