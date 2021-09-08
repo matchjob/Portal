@@ -93,5 +93,5 @@ def signup(request):
         profile = UserProfile(user=user, cedula=cedula)
         profile.save()
 
-        return render(request, 'home/login.html')
+        return HttpResponseRedirect(reverse('home:login'))
     return render(request, 'home/signup.html')
