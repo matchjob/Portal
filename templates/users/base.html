@@ -14,46 +14,16 @@
     <title>MJ | Empresa</title>
   </head>
   {% include "loader_page.html" %}
-  <body>
-    <section class="bg-dark" style="height: 10vh;">
-    <nav class="navbar navbar-expand-lg  navbar-dark bg-dark border-bottom border-light position-fixed-top">
-      <div class="container-fluid">
-        <a class="navbar-brand"  href="{% url 'users:UsersHomePage' %}">
-          <img src="{% static 'images/logo_match_job_completo.png' %}" class="rounded-circle" width="80px" height="80px" />
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-            {% include "users/navbar_user.html" %}
-          </ul>
-          <div class="dropstart">
-            <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
-            
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-              <li><a class="btn dropdown-item" type="button" href="{% url 'home:HomePage' %}">Match Job</a></li>
-              <li><a class="btn dropdown-item" type="button" href="{% url 'users:UsersPerfilPage' %}">Perfil</a></li>
-              <li><a class="btn dropdown-item" type="button" href="{% url 'home:logout' %}">Logout</a></li>
-            </ul>
-          </div>
-          <div>
-
-              {% if user.profile.picture %}
-                  <img src="{{ user.profile.picture.url }}" class="border d-sm-none d-md-block border-light ms-2" style="width:auto; height:10vh"  />
-                {% else%}
-                  <img src="{% static 'images/profile.png' %}" class="border d-sm-none d-md-block border-light ms-2"style="width:auto; height:10vh" />
-                {% endif %}
-          </div>
-        </div>
-      </div>
-    </nav>
+  <body class="bg-dark text-white">
+    
+    <section class="" >
+      {% include "users/navbar_user.html" %}
     </section>
-    <section class="" style="height: 90vh; padding-top: 6vh;">
+
+    <section class="pt-2">
       <div class="container-fluid ">
-        <div class="row ">        
-          <div class="col-12 bg-light ">
+        <div class="row">        
+          <div class="col-12">
             {% block container %}{% endblock%}  
           </div>
         </div>    
