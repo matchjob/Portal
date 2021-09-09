@@ -79,6 +79,53 @@ def users_perfil_page(request):
     return render(request, 'users/perfil.html', dict_perfil)
 
 
+def users_hoja_vida_page(request):
+    """Pagina Principal"""
+
+    if request.method == "POST":
+        profile = request.user.profile
+        form = ProfileForm(request.POST, request.FILES)
+        if form.is_valid():
+            data = form.cleaned_data
+            if data['department']:
+                profile.department = Department.objects.get(id=data['department']['id'])
+            if data['department']:
+                profile.specialism = Specialism.objects.get(id=data['specialism']['id'])
+            profile.currently_working = data['currently_working']
+            profile.search_job = data['search_job']
+            profile.home_office = data['home_office']
+            profile.freelancer = data['freelancer']
+            profile.residence_change = data['residence_change']
+            profile.remote_work = data['remote_work']
+            profile.to_travel = data['to_travel']
+            profile.desired_salary = data['desired_salary']
+            profile.current_salary = data['current_salary']
+            profile.phone_number = data['phone_number']
+            profile.web_site = data['web_site']
+            profile.lat = data['lat']
+            profile.lon = data['lon']
+            profile.biography = data['biography']
+            if data['country']:
+                profile.country = Country.objects.get(id=data['country']['id'])
+            profile.nearby_search = data['nearby_search']
+            profile.gender = data['gender']
+            profile.academic_title = data['academic_title']
+            if data['picture']:
+                profile.picture = data['picture']
+            profile.save()
+
+        dict_perfil = get_data_combos_profile(request.user.id)
+        dict_perfil['map'] = get_url_zone(request.user.profile.lat, request.user.profile.lon)
+        dict_perfil['form'] = form
+        return render(request, 'users/hoja_vida.html', dict_perfil)
+
+    dict_perfil = get_data_combos_profile(request.user.id)
+    dict_perfil['map'] = get_url_zone(request.user.profile.lat, request.user.profile.lon)
+    form = ProfileForm()
+    dict_perfil['form'] = form
+    return render(request, 'users/hoja_vida.html', dict_perfil)
+
+
 class UsersHVPage(TemplateView):
     """Pagina Principal"""
     template_name = "users/hoja_vida.html"

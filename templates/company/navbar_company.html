@@ -1,8 +1,45 @@
-  <li class="nav-item mx-5 mt-2">
-    <a class="btn btn-lg btn-outline-mja " aria-current="page"  href="{% url 'company:CompanyNMPage' %}">Nuevo Match</a>
-  </li>
-
-  <li class="nav-item mx-5 mt-2">
-    <a class="btn btn-lg btn-outline-mja " aria-current="page"  href="{% url 'company:CompanyMatchPage' %}">Match Realizados</a>
-  </li>
-
+  {% load static %}
+  <nav class="navbar navbar-expand-lg navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+    <div class="container-fluid">
+      <a class="navbar-brand"  href="{% url 'company:CompanyHomePage' %}">
+        <img src="{% static 'images/logo_match_job_manos.png' %}" class="rounded-circle" style="width: 80px; height: auto; max-height: 60px;" />
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+  
+          <li class="nav-item mx-2 mt-2 mt-lg-0">
+            <a class="btn btn-sm btn-outline-mja d-block mx-auto" aria-current="page"  href="{% url 'company:CompanyNMPage' %}">Nuevo Match</a>
+          </li>
+          
+          <li class="nav-item mx-2 mt-2 mt-lg-0">
+            <a class="btn btn-sm btn-outline-mja btn-outline-mja d-block mx-auto" aria-current="page"  href="{% url 'company:CompanyMatchPage' %}">Match Realizados</a>
+          </li>
+  
+          <li class="nav-item mx-2 mt-2"><a class="btn btn-sm btn-outline-mja btn-outline-mja d-block mx-auto d-lg-none" href="{% url 'users:UsersPerfilPage' %}">Perfil</a></li>
+          <li class="nav-item mx-2 mt-2"><a class="btn btn-sm btn-outline-mja btn-outline-mja d-block mx-auto d-lg-none" href="{% url 'home:logout' %}">Logout</a></li>
+        </ul>
+        <div class="dropstart d-none d-lg-block">
+          <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+          
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+            <li><a class="btn dropdown-item" type="button" href="{% url 'users:UsersPerfilPage' %}">Perfil</a></li>
+            <li><a class="btn dropdown-item" type="button" href="{% url 'home:logout' %}">Logout</a></li>
+          </ul>
+        </div>
+        <div class="d-none d-lg-block">
+  
+            {% if user.profile.picture %}
+                <img src="{{ user.profile.picture.url }}" class="rounded-circle d-sm-none d-md-block ms-2 p-1" style="width:auto; height:60px;"  />
+              {% else%}
+                <img src="{% static 'images/profile.png' %}" class="rounded-circle d-sm-none d-md-block ms-2 p-1"style="width:auto; height:60px" />
+              {% endif %}
+        </div>
+      </div>
+    </div>
+  </nav>
+  
+  

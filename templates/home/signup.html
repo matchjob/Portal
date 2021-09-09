@@ -17,13 +17,13 @@
         <div class="container-fluid h-custom bg-dark">
           <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-md-9 col-lg-6 col-xl-5">
-              <img src="{% static 'images/logoMJ.png' %}" class="rounded-circle" width="100%" height="auto" />
+              <img src="{% static 'images/logo_match_job_blanco.png' %}" class="" width="100%" height="auto" />
             </div>
             <div-- class="col-md-8 col-lg-6 col-xl-4 offset-xl-1 text-center">
               <form method="POST" action="{%  url 'home:signup' %}">
               {% csrf_token %}
                 <div class="divider d-flex align-items-center my-4">
-                    <H1 class="text-center fw-bold mx-3 mb-0 "><span style="color: #7c9afb;">MATCH</span> <span style="color: #92fc69">JOB</span></H1>
+                    <H1 class="text-center fw-bold mx-3 mb-0 "><span style="color: #7c9afb;">REGI</span> <span style="color: #92fc69; margin-left: -10px;">STRO</span></H1>
                 </div>
 
                 {% if error %}
@@ -100,14 +100,37 @@
                     </div>                                                  
                 </div>
 
-                <div class="text-center text-lg-start mt-4 pt-2">
-                    <button type="submit" class="btn bg-mj-a btn-lg"
-                      style="padding-left: 2.5rem; padding-right: 2.5rem;">Registrarte</button>
-                    <p class="small fw-bold mt-2 pt-1 mb-0">¿Ya tienes una cuenta? <a href="{% url 'home:login' %}"
-                        class="text-mja">Ingresa</a></p>
-                    <p class="small fw-bold mt-2 pt-1 mb-0"><a href="{% url 'home:HomePage' %}"
-                        class="text-danger">Regresar</a></p>
-                  </div>
+                <div class="row mb-2">
+                    <div class="col-11 offset-1 align-self-start text-start ">
+                        <a href="#!" class="text-white text-start">Términos y Condiciones Generales</a>
+                    </div>
+                    <div class="col-11 offset-1 align-self-start text-start">
+                        <a href="#!" class="text-white">Políticas de Privacidad</a>
+                    </div>
+                </div>
+
+                
+                <div class="row">
+                    <div class="col-11 offset-1 align-self-start text-start">
+                        <input class="form-check-input" type="checkbox" value="" id="conditions" name="conditions" required />
+                        <label class="form-check-label" for="conditions">
+                            Acepto los términos y condiciones
+                        </label>
+                    </div>                    
+                </div>
+                
+                <div class="row">
+                    <div class="col-11 offset-1 align-self-start text-start">
+                        <div class="text-center text-lg-start mt-2 pt-2 mb-5 pb-5">
+                            <button type="submit" class="btn bg-mj-a btn-lg"
+                            style="padding-left: 2.5rem; padding-right: 2.5rem;">Registrarte</button>
+                            <p class="small fw-bold mt-2 pt-1 mb-0">¿Ya tienes una cuenta? <a href="{% url 'home:login' %}"
+                                class="text-mja">Ingresa</a></p>
+                            <p class="small fw-bold mt-2 pt-1 mb-0"><a href="{% url 'home:HomePage' %}"
+                                class="text-danger">Regresar</a></p>
+                        </div>
+                    </div>
+                </div>
                 
 
       

@@ -22,7 +22,7 @@ urlpatterns = [
     ),
     path(
         route='UsersHVPage',
-        view=views.UsersHVPage.as_view(),
+        view=views.users_hoja_vida_page,
         name='UsersHVPage'
     ),
     path(

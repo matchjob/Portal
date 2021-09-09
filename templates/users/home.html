@@ -1,11 +1,49 @@
  {% extends 'users/base.html' %}
-
+ {% block title %} <span style="color: #7c9afb;">Bienvenido</span> <span style="color: #92fc69;">{{ user.username | title }}</span>    {% endblock%}   
  {% block container %}
- 
-    <div class="row my-3">
-        <div class="col-5 mx-auto">
-            <h1> Bienvenido a MJ {{ user.username }} </h1>
+ <div class="row">
+     <div class="col-11 mx-auto">
+        <div class="card my-2">
+
+            <div class="card-body text-end">
+              <blockquote class="blockquote mb-0">
+                <p>Una gran visión sin grandes personas es irrelevante</p>
+                <footer class="blockquote-footer"><cite title="Source Title">Jim Collins</cite></footer>
+              </blockquote>
+            </div>
+          </div>
+     </div>
+ </div>
+
+ <div class="row my-2">
+    <div class="col-12 col-lg-3 mx-auto my-2">
+        <div class="card" style="width: 100%;">
+            <div class="card-body">
+              <h4 class="card-title">Match Realizados</h4>
+              <h5 class="card-subtitle mb-2 text-muted">Match Pendientes: <span class="text-success fw-bold "> 1 </span> </h5>
+              <p class="card-text">Ve quien te realiza match y porque no te han aceptado</p>
+            </div>
         </div>
-    </div>
+        <div class="card-footer text-end bg-mj-v ">
+            <a  href="{% url 'users:UsersMatchPage' %}" class="card-link fw-bold">Ver Match</a>
+        </div>
+     </div>
+
+     <div class="col-12 col-lg-3 mx-auto my-2">
+        <div class="card" style="width: 100%;">
+            <div class="card-body">
+              <h4 class="card-title">Hoja de Vida</h4>
+              <h5 class="card-subtitle mb-2 text-muted">Salud del Pefil: <span class="text-success fw-bold "> Excelente </span> </h5>
+              <p class="card-text">Manten tu perfil actualizado constantemente</p>
+            </div>
+        </div>
+        <div class="card-footer text-end bg-mj-v ">
+            <a href="{% url 'users:UsersHVPage' %}" class="card-link fw-bold">Actualizar Hoja de vida</a>
+        </div>
+     </div>   
+ </div>
+
+ 
+    
 
  {% endblock%}  

@@ -14,13 +14,59 @@
     <title>MJ | Empresa</title>
   </head>
   {% include "loader_page.html" %}
-  <body class="bg-dark text-white">
+  <body class="bg-light text-dark">
     
-    <section class="" >
-      {% include "users/navbar_user.html" %}
-    </section>
+    <header class="sticky-top">
+      <nav class="navbar navbar-expand-lg navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+        <div class="container-fluid">
+          <a class="navbar-brand"  href="{% url 'users:UsersHomePage' %}">
+            <img src="{% static 'images/logo_match_job_manos.png' %}" class="rounded-circle" style="width: 80px; height: auto; max-height: 60px;" />
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+      
+              <li class="nav-item mx-2 mt-2 mt-lg-0">
+                <h1 class=""> {% block title %}  {% endblock%}</h1>
+              </li>
+              {% if user.profile %}
+              <li class="nav-item mx-2 mt-2"><a class="btn btn-sm btn-outline-mja btn-outline-mja d-block mx-auto d-lg-none" href="{% url 'users:UsersPerfilPage' %}">Perfil</a></li>
+              {% elif user.profilecompany %}
+              <li class="nav-item mx-2 mt-2"><a class="btn btn-sm btn-outline-mja btn-outline-mja d-block mx-auto d-lg-none" href="{% url 'company:CompanyPerfilPage' %}">Perfil</a></li>
+              {% endif %}
+              <li class="nav-item mx-2 mt-2"><a class="btn btn-sm btn-outline-mja btn-outline-mja d-block mx-auto d-lg-none" href="{% url 'home:logout' %}">Logout</a></li>
+            </ul>
+            <div class="dropstart d-none d-lg-block">
+              <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+              
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                {% if user.profile %}
+                <li><a class="btn dropdown-item" type="button" href="{% url 'users:UsersPerfilPage' %}">Perfil</a></li>
+                {% elif user.profilecompany %}
+                <li><a class="btn dropdown-item" type="button" href="{% url 'company:CompanyPerfilPage' %}">Perfil</a></li>
+                {% endif %}
+                <li><a class="btn dropdown-item" type="button" href="{% url 'home:logout' %}">Logout</a></li>
+              </ul>
+            </div>
+            <div class="d-none d-lg-block">
+              {% if user.profile.picture %}
+                <img src="{{ user.profile.picture.url }}" class="rounded-circle d-sm-none d-md-block ms-2 p-1" style="width:auto; height:60px;"  />
+              {% elif user.profilecompany.picture %}
+              <img src="{{ user.profilecompany.picture.url }}" class="rounded-circle d-sm-none d-md-block ms-2 p-1" style="width:auto; height:60px;"  />
+              {% else%}
+                <img src="{% static 'images/profile.png' %}" class="rounded-circle d-sm-none d-md-block ms-2 p-1"style="width:auto; height:60px" />
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </nav>
+      
+    </header>
 
-    <section class="pt-2">
+    <section class="pt-2 ">
       <div class="container-fluid ">
         <div class="row">        
           <div class="col-12">

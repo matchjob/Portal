@@ -1,11 +1,496 @@
- {% extends 'users/base.html' %}
-
+{% extends 'users/base.html' %}
+ {% load static %}
+ {% block title %} <span style="color: #7c9afb;">Hoja d</span> <span style="color: #92fc69; margin-left: -10px;">e Vida</span> {% endblock%}   
  {% block container %}
- 
-    <div class="row my-3">
-        <div class="col-5 mx-auto">
-            <h1> Bienvenido a tu hoja de vida {{ user.username }} </h1>
-        </div>
+ <div class="row justify-content-center" style="margin-top: -15px;">
+  <div class="col-11 col-md-8 mx-auto bg-dark text-white py-3" id="profile-box">
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            {% if form.errors %}
+                    <p>{{ form.errors }}</p>
+            {% endif %}
+            
+            <div class="media">
+                {% if user.profile.picture %}
+                  <img src="{{ user.profile.picture.url }}" class="rounded-circle" width="100px" height="auto" />
+                {% else%}
+                  <img src="{% static 'images/profile.png' %}" class="rounded-circle" width="100px" height="auto" />
+                {% endif %}
+
+                <div class="media-body">
+                    <h5 class="ml-4 text-mja">@{{ user.username }} | {{ user.get_full_name }}</h5>
+                    <input type="file"  class="form-control" name="picture">
+                </div>
+            </div>
+            
+
+            <div class="form-group">
+                <label>Area</label>
+                <select class="form-select" id="department" name="department" aria-label="Default select example">
+                    <option value="{{ user.profile.department.id }}" selected>{{ user.profile.department.name }}</option>
+                    {% for dp in Department %}
+                    <option value="{{ dp.id }}">{{ dp.name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+              <label>Perfil</label>
+              <select class="form-select" id="specialism" name="specialism" aria-label="Default select example">
+                  <option value="{{ user.profile.specialism.id }}" selected>{{ user.profile.specialism.name }}</option>
+                  {% for sp in Specialism %}
+                  <option value="{{ sp.id }}">{{ sp.name}}</option>
+                  {% endfor %}
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>País</label>
+              <select class="form-select" id="country" name="country" aria-label="Default select example">
+                  <option value='{{ user.profile.country.id }}' selected>{{ user.profile.country.country }}</option>
+                  {% for cy in Country %}
+                  <option value="{{ cy.id}}">{{ cy.country}}</option>
+                  {% endfor %}
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Género</label>
+              <input type="text" class="form-control" id="gender" name="gender" value="{{ user.profile.gender }}"></input>
+            </div>
+
+            <div class="form-group">
+              <label>Máximo Nivel Académico</label>
+              <input type="text" class="form-control" id="academic_title" name="academic_title" value="{{ user.profile.academic_title }}"></input>
+            </div>
+
+            <div class="form-group">
+              <label>Salario Actual</label>
+              <input type="number" class="form-control" id="current_salary" name="current_salary" value="{{ user.profile.current_salary }}"></input>
+            </div>
+
+            <div class="form-group">
+                <label>Salario Deseado</label>
+                <input type="number"  class="form-control" id="desired_salary" name="desired_salary" value="{{ user.profile.desired_salary }}"></input>
+            </div>
+
+            <div class="form-check form-switch">
+                {%if user.profile.currently_working == 1 %}
+                <input class="form-check-input" type="checkbox" id="currently_working" name="currently_working" checked>
+                {% else %}
+                <input class="form-check-input" type="checkbox" id="currently_working" name="currently_working">
+                {% endif %}
+                <label class="form-check-label" for="currently_working">Trabajo Actualmente</label>
+            </div>
+              
+
+            <div class="form-check form-switch">
+                {%if user.profile.search_job == 1 %}
+                <input class="form-check-input" type="checkbox" id="search_job" name="search_job" checked>
+                {% else %}
+                <input class="form-check-input" type="checkbox" id="search_job" name="search_job">
+                {% endif %}
+                <label class="form-check-label" for="search_job">Busco trabajo</label>
+            </div>
+
+            <div class="form-check form-switch">
+                {%if user.profile.home_office == 1 %}
+                <input class="form-check-input" type="checkbox" id="home_office" name="home_office" checked>
+                {% else %}
+                <input class="form-check-input" type="checkbox" id="home_office" name="home_office">
+                {% endif %}
+                <label class="form-check-label" for="home_office">Home Office</label>
+            </div>
+
+            <div class="form-check form-switch">
+                {%if user.profile.freelancer == 1 %}
+                <input class="form-check-input" type="checkbox" id="freelancer" name="freelancer" checked>
+                {% else %}
+                <input class="form-check-input" type="checkbox" id="freelancer" name="freelancer">
+                {% endif %}
+                <label class="form-check-label" for="freelancer">Freelancer</label>
+            </div>
+
+            <div class="form-check form-switch">
+                {%if user.profile.residence_change == 1 %}
+                <input class="form-check-input" type="checkbox" id="residence_change" name="residence_change" checked>
+                {% else %}
+                <input class="form-check-input" type="checkbox" id="residence_change" name="residence_change">
+                {% endif %}
+                <label class="form-check-label" for="residence_change">Puedo Cambiar de Residencia</label>
+            </div>
+
+            <div class="form-check form-switch">
+                {%if user.profile.remote_work == 1 %}
+                <input class="form-check-input" type="checkbox" id="remote_work" name="remote_work" checked>
+                {% else %}
+                <input class="form-check-input" type="checkbox" id="remote_work" name="remote_work">
+                {% endif %}
+                <label class="form-check-label" for="remote_work">Trabajo Remoto</label>
+            </div>
+
+            <div class="form-check form-switch">
+                {%if user.profile.to_travel == 1 %}
+                <input class="form-check-input" type="checkbox" id="to_travel" name="to_travel" checked>
+                {% else %}
+                <input class="form-check-input" type="checkbox" id="to_travel" name="to_travel">
+                {% endif %}
+                <label class="form-check-label" for="to_travel">Puedo Viajar</label>
+            </div>
+
+            <div class="form-check form-switch">
+                {%if user.profile.nearby_search == 1 %}
+                <input class="form-check-input" type="checkbox" id="nearby_search" name="nearby_search" checked>
+                {% else %}
+                <input class="form-check-input" type="checkbox" id="nearby_search" name="nearby_search">
+                {% endif %}
+                <label class="form-check-label" for="nearby_search">Buscar Solo En Mi Área</label>
+            </div>
+
+            <div class="form-group">
+                <label>Sobre Mi</label>
+                <textarea class="form-control" id="biography" name="biography">{{ user.profile.biography }}</textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Numero de Telefono</label>
+                <input class="form-control" type="text" id="phone_number" name="phone_number" value="{{ user.profile.phone_number }}"/>
+            </div>
+
+            <div class="form-group">
+                <label>Pagina Web (Portafolio)</label>
+                <input type="url"  class="form-control" id="web_site" name="web_site" value="{{ user.profile.web_site }}"></input>
+            </div>
+
+            <input type="hidden"  id="lat" name="lat" value="{{ user.profile.lat }}" >
+            <input type="hidden"  id="lon" name="lon" value="{{ user.profile.lon }}" >
+          
+            <div class="row mt-3">
+                <div class="col-12">
+                    <p class="btn btn-outline-mja" id="location-button" onclick="get_cordenates()">Obtener Zona</p>    
+                </div>
+                <div class="col-12">
+                    {%if map %}
+                    <h5 id='ubicacion_obtenida' style="display: block;"><span id='ubicacion_obtenida_text'>Zona </span> <a id="output" href='{{map}}' target="_blank" >mapa</a> </h5>
+                    {% else %}
+                    <h5 id='ubicacion_obtenida' style="display: none;"><span id='ubicacion_obtenida_text'>Zona Actualizada </span> <a id="output" href="#" target="_blank" >mapa</a> </h5>
+                    {% endif %}
+                </div>        
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <h5> 
+                        <a data-bs-toggle="modal" data-bs-target="#SkillsModal" data-bs-whatever="@mdo">
+                        <img src="{% static 'images/icons/information.png' %}" class="rounded-circle" width="15px" height="auto" />
+                        </a>   
+                        Habilidades Tecnicas                     
+                    </h5>
+                </div>
+                {% for lg in skills %}
+                <div class="col-12 my-1">
+                    <div class="progress">
+                        {% if lg.level__level == 25 %}
+                          <div class="progress-bar bg-secondary" role="progressbar" style="width:{{ lg.level__level }}%;" aria-valuenow="{{ lg.level__level }}" aria-valuemin="0" aria-valuemax="100">{{ lg.skill__name |upper  }}</div>
+                        {% elif lg.level__level == 50 %}
+                          <div class="progress-bar bg-warning text-dark" role="progressbar" style="width:{{ lg.level__level }}%;" aria-valuenow="{{ lg.level__level }}" aria-valuemin="0" aria-valuemax="100">{{ lg.skill__name |upper  }} </div>
+                        {% elif lg.level__level == 75 %}
+                          <div class="progress-bar bg-success" role="progressbar" style="width:{{ lg.level__level }}%;" aria-valuenow="{{ lg.level__level }}" aria-valuemin="0" aria-valuemax="100">{{ lg.skill__name |upper  }}</div>
+                        {% elif lg.level__level == 100 %}
+                          <div class="progress-bar bg-primary" role="progressbar" style="width:{{ lg.level__level }}%;" aria-valuenow="{{ lg.level__level }}" aria-valuemin="0" aria-valuemax="100">{{ lg.skill__name |upper  }}</div>
+                        {% endif %}
+                      </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <h5>
+                        <a data-bs-toggle="modal" data-bs-target="#SoftSkillsModal" data-bs-whatever="@mdo">
+                        <img src="{% static 'images/icons/information.png' %}" class="rounded-circle" width="15px" height="auto" />
+                        </a>Habilidades Blandas                 
+                    </h5>
+                </div>
+                {% for lg in softskills %}
+                <div class="col-12 my-1">
+                    <div class="progress">
+                    {% if lg.level__level == 25 %}
+                      <div class="progress-bar bg-secondary" role="progressbar" style="width:{{ lg.level__level }}%;" aria-valuenow="{{ lg.level__level }}" aria-valuemin="0" aria-valuemax="100">{{ lg.SoftSkill__name |upper  }}</div>
+                    {% elif lg.level__level == 50 %}
+                      <div class="progress-bar bg-warning text-dark" role="progressbar" style="width:{{ lg.level__level }}%;" aria-valuenow="{{ lg.level__level }}" aria-valuemin="0" aria-valuemax="100">{{ lg.SoftSkill__name |upper  }} </div>
+                    {% elif lg.level__level == 75 %}
+                      <div class="progress-bar bg-success" role="progressbar" style="width:{{ lg.level__level }}%;" aria-valuenow="{{ lg.level__level }}" aria-valuemin="0" aria-valuemax="100">{{ lg.SoftSkill__name |upper  }}</div>
+                    {% elif lg.level__level == 100 %}
+                      <div class="progress-bar bg-primary" role="progressbar" style="width:{{ lg.level__level }}%;" aria-valuenow="{{ lg.level__level }}" aria-valuemin="0" aria-valuemax="100">{{ lg.SoftSkill__name |upper  }}</div>
+                    {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <h5> 
+                        <a data-bs-toggle="modal" data-bs-target="#LanguagesModal" data-bs-whatever="@mdo">
+                        <img src="{% static 'images/icons/information.png' %}" class="rounded-circle" width="15px" height="auto" />
+                        </a>      Idiomas                  
+                    </h5>
+                </div>
+                {% for lg in languages %}
+                <div class="col-12 my-1">
+                    <div class="progress">
+                      {% if lg.level__level == 25 %}
+                        <div class="progress-bar bg-secondary" role="progressbar" style="width:{{ lg.level__level }}%;" aria-valuenow="{{ lg.level__level }}" aria-valuemin="0" aria-valuemax="100">{{ lg.language__name |upper  }}</div>
+                      {% elif lg.level__level == 50 %}
+                        <div class="progress-bar bg-warning text-dark" role="progressbar" style="width:{{ lg.level__level }}%;" aria-valuenow="{{ lg.level__level }}" aria-valuemin="0" aria-valuemax="100">{{ lg.language__name |upper  }} </div>
+                      {% elif lg.level__level == 75 %}
+                        <div class="progress-bar bg-success" role="progressbar" style="width:{{ lg.level__level }}%;" aria-valuenow="{{ lg.level__level }}" aria-valuemin="0" aria-valuemax="100">{{ lg.language__name |upper  }}</div>
+                      {% elif lg.level__level == 100 %}
+                        <div class="progress-bar bg-primary" role="progressbar" style="width:{{ lg.level__level }}%;" aria-valuenow="{{ lg.level__level }}" aria-valuemin="0" aria-valuemax="100">{{ lg.language__name |upper  }}</div>
+                      {% endif %}
+                      </div>
+                </div>
+                {% endfor %}
+            </div>
+            
+            <div class="row justify-content-end mb-5">
+              <div class="col-6 align-self-end order-last text-end">
+                <button type="submit" class="btn btn-outline-mja btn-block mt-5 ">Actualizar Perfil</button>
+              </div>
+            </div>
+        </form>
     </div>
+</div>
+
+
+
+<div class="modal fade" id="SkillsModal" tabindex="-1" aria-labelledby="SkillsModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="SkillsModalLabel">Agregar Habilidades Tecnicas</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id='form_add_skill'>       
+          {% csrf_token %}   
+          <div class="mb-3">
+            <label for="skill" class="col-form-label">Habilidad:</label>
+            <input type="text" class="form-control" id="skill" name="skill" required></input>
+          </div>
+          <div class="mb-3">
+            <label for="skill_level" class="col-form-label">Nivel:</label>
+            <select class="form-select" id="skill_level" name="skill_level" required>
+                <option selected disabled>Nivel</option>
+                {% for lv in Level %}
+                <option value="{{ lv.id}}">{{ lv.description}}</option>
+                {% endfor %}
+            </select>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button id="add_skill_btn" type="button" class="btn btn-primary" onclick="load_page_start(), add_skill()">Add</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="SoftSkillsModal" tabindex="-1" aria-labelledby="SoftSkillsModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="SoftSkillsModalLabel">Agregar Habilidades Blandas</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id='form_add_soft_skill'>       
+            {% csrf_token %}   
+            <div class="mb-3">
+              <label for="soft_skill" class="col-form-label">Habilidad:</label>
+              <input type="text" class="form-control" id="soft_skill" name="soft_skill" required></input>
+            </div>
+            <div class="mb-3">
+              <label for="soft_skill_level" class="col-form-label">Nivel:</label>
+              <select class="form-select" id="soft_skill_level" name="soft_skill_level" required>
+                  <option selected disabled>Nivel</option>
+                  {% for lv in Level %}
+                  <option value="{{ lv.id}}">{{ lv.description}}</option>
+                  {% endfor %}
+              </select>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button id="add_soft_skill_btn" type="button" class="btn btn-outline-mja" onclick="load_page_start(), add_soft_skill()">Add</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="LanguagesModal" tabindex="-1" aria-labelledby="LanguagesModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="LanguagesModalLabel">Agregar Idioma</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id='form_add_language'>       
+            {% csrf_token %}   
+            <div class="mb-3">
+              <label for="language" class="col-form-label">Idioma:</label>
+              <input type="text" class="form-control" id="language" name="language" required></input>
+            </div>
+            <div class="mb-3">
+              <label for="language_level" class="col-form-label">Nivel:</label>
+              <select class="form-select" id="language_level" name="language_level" required>
+                  <option selected disabled>Nivel</option>
+                  {% for lv in Level %}
+                  <option value="{{ lv.id}}">{{ lv.description}}</option>
+                  {% endfor %}
+              </select>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button id="add_language_btn" type="button" class="btn btn-outline-mja" onclick="load_page_start(), add_language()">Add</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script>
+    function get_cordenates(){
+        document.getElementById("ubicacion_obtenida").style.display = "none";
+        var lat;
+        var lon;
+        var options = {
+              enableHighAccuracy: true,
+              timeout: 5000,
+              maximumAge: 0
+            };
+        function success(position) {
+          lat = position.coords.latitude;
+          lon = position.coords.longitude;
+          var map_url = "https://www.google.com.mx/maps/@" + lat + "," + lon + "z";
+          document.getElementById('lat').value = lat;
+          document.getElementById('lon').value = lon;
+          document.getElementById("ubicacion_obtenida").style.display = "block";
+          document.getElementById("ubicacion_obtenida_text").innerHTML = 'Zona Actualizada';
+          document.getElementById('output').removeAttribute('href');
+          document.getElementById('output').setAttribute('href', map_url);
+        };
+
+        function error(err) {
+          console.warn('ERROR(' + err.code + '): ' + err.message);
+        };
+
+        navigator.geolocation.getCurrentPosition(success, error, options);     
+    }
+
+    function add_skill() {
+        /*Llama al servicio desde Ajax*/
+        const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+        var headers_data = {'X-CSRFToken': csrftoken};
+        var url = "/users/add_skill" ;        
+        var skill=document.getElementsByName("skill")[0].value;  
+        var skill_level=document.getElementsByName("skill_level")[0].value;        
+        document.getElementById('add_skill_btn').style.display = 'none';
+
+        if (skill != "" & skill_level != "Nivel") {
+          $.ajax({
+            type: "POST",
+            url: url,
+            headers: headers_data,
+            data: $("#form_add_skill").serialize(),
+            success: function(data)
+                {
+                location.reload();
+                load_page_finish();
+                },
+            error: function (error) {
+              load_page_finish();
+              document.getElementById('add_skill_btn').style.display = 'block';
+            }
+          });
+        }
+        else {
+            document.getElementById('add_skill_btn').style.display = 'block';
+            $(".loader-page").css({visibility:"hidden",opacity:"0"});
+            alert( "Es necesario llenar todos los campos" );
+        }        
+    };
+
+    function add_soft_skill() {
+        /*Llama al servicio desde Ajax*/
+        const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+        var headers_data = {'X-CSRFToken': csrftoken};
+        var url = "/users/add_soft_skill" ;        
+        var soft_skill=document.getElementsByName("soft_skill")[0].value;  
+        var soft_skill_level=document.getElementsByName("soft_skill_level")[0].value;        
+        document.getElementById('add_soft_skill_btn').style.display = 'none';
+
+        if (soft_skill != "" & soft_skill_level != "Nivel") {
+          $.ajax({
+            type: "POST",
+            url: url,
+            headers: headers_data,
+            data: $("#form_add_soft_skill").serialize(),
+            success: function(data)
+                {
+                location.reload();
+                load_page_finish();
+                },
+            error: function (error) {
+              load_page_finish();
+            }
+          });
+        }
+        else {
+            document.getElementById('add_soft_skill_btn').style.display = 'block';
+            $(".loader-page").css({visibility:"hidden",opacity:"0"});
+            alert( "Es necesario llenar todos los campos" );
+        }        
+    };
+
+    function add_language() {
+        /*Llama al servicio desde Ajax*/
+        const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+        var headers_data = {'X-CSRFToken': csrftoken};
+        var url = "/users/add_language" ;        
+        var language=document.getElementsByName("language")[0].value;  
+        var language_level=document.getElementsByName("language_level")[0].value;        
+        document.getElementById('add_language_btn').style.display = 'none';
+
+        if (language != "" & language_level != "Nivel") {
+          $.ajax({
+            type: "POST",
+            url: url,
+            headers: headers_data,
+            data: $("#form_add_language").serialize(),
+            success: function(data)
+                {
+                location.reload();
+                load_page_finish();
+                },
+            error: function (error) {
+              load_page_finish();
+            }
+          });
+        }
+        else {
+            document.getElementById('add_language_btn').style.display = 'block';
+            $(".loader-page").css({visibility:"hidden",opacity:"0"});
+            alert( "Es necesario llenar todos los campos" );
+        }        
+    };
+
+</script>
 
  {% endblock%}  
