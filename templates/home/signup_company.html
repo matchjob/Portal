@@ -20,19 +20,11 @@
               <img src="{% static 'images/logo_match_job_blanco.png' %}" class="" width="100%" height="auto" />
             </div>
             <div-- class="col-md-8 col-lg-6 col-xl-4 offset-xl-1 text-center">
-              <form method="POST" action="{%  url 'home:signup' %}">
+              <form method="POST" action="{%  url 'home:signup_company' %}">
               {% csrf_token %}
-              <div class="row">
-                  <div class="col-8">
-                    <div class="divider d-flex align-items-center my-4">
-                        <H1 class="text-center fw-bold mx-3 mb-0 "><span style="color: #7c9afb;">REGI</span> <span style="color: #92fc69; margin-left: -10px;">STRO</span></H1>
-                    </div>
-                  </div>
-                  <div class="col-4 my-4">
-                        <a class="btn bg-mj-a text-white fw-bold" href="{% url 'home:signup_company' %}">Soy Empresa</a>
-                  </div>
-              </div>
-                
+                <div class="divider d-flex align-items-center my-4">
+                    <H1 class="text-center fw-bold mx-3 mb-0 "><span style="color: #7c9afb;">REGI</span> <span style="color: #92fc69; margin-left: -10px;">STRO</span></H1>
+                </div>
 
                 {% if error %}
                 <div>
@@ -74,19 +66,8 @@
                         <img src="{% static 'images/icons/information.png' %}" class="rounded-circle" width="25px" height="auto" />
                     </label>
                     <div class="col-11">
-                        <input class="form-control form-control-lg" type="text" placeholder="First name" id="first_name" name="first_name" required="true" />                    
-                    </div>   
-                    
-                </div>
-
-                <div class="row mb-2">
-                    <label for="email" class="col-1 col-form-label">
-                        <img src="{% static 'images/icons/information.png' %}" class="rounded-circle" width="25px" height="auto" />
-                    </label>
-                    <div class="col-11">
-                        <input class="form-control form-control-lg" type="text" placeholder="Last name" id="last_name" name="last_name" required="true" />                    
-                    </div>   
-                    
+                        <input class="form-control form-control-lg" type="text" placeholder="Nombre Comercial" id="comercial_name" name="comercial_name" required="true" />                    
+                    </div>                       
                 </div>
 
                 <div class="row mb-2">

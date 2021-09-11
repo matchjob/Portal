@@ -9,6 +9,18 @@ from profiles.models import Country
 # Empresa
 
 
+class SubscriptionCompany(models.Model):
+    """Planes de pago"""
+    name = models.CharField(max_length=500)
+    description = models.TextField(default="")
+    active = models.BooleanField(default=True)
+    created = models.DateTimeField(auto_now_add=True)
+    update = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return '%s' % (self.name)
+
+
 class ProfileCompany(models.Model):
     """Perfil de la empresa"""
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -21,6 +33,7 @@ class ProfileCompany(models.Model):
     cedula = models.CharField(max_length=50, unique=True)
     biography = models.TextField(blank=True, null=True)
     country = models.ForeignKey(Country, on_delete=models.DO_NOTHING, blank=True, null=True)
+    subscription = models.ForeignKey(SubscriptionCompany, on_delete=models.DO_NOTHING, blank=True, null=True)
     created = models.DateTimeField(auto_now_add=True)
     update = models.DateTimeField(auto_now=True)
 

@@ -95,3 +95,39 @@ def signup(request):
 
         return HttpResponseRedirect(reverse('home:login'))
     return render(request, 'home/signup.html')
+
+
+def signup_company(request):
+    """logout """
+    if request.method == "POST":
+        username = request.POST['username']
+        password = request.POST['password']
+        password_confirmation = request.POST['password_confirmation']
+        comercial_name = request.POST['comercial_name']
+        email = request.POST['email']
+        cedula = request.POST['cedula']
+
+        if password != password_confirmation:
+            return render(request, 'home/signup_company.html', {'error': 'Password confirmation does not match'})
+
+        if User.objects.filter(email=email).exists():
+            return render(request, 'home/signup_company.html', {'error': 'Email is already in use'})
+
+        if UserProfile.objects.filter(cedula=cedula).exists():
+            return render(request, 'home/signup_company.html', {'error': 'Cedula is already in use'})
+
+        try:
+            user = User.objects.create_user(username=username, password=password)
+        except IntegrityError:
+            return render(request, 'home/signup_company.html', {'error': 'Username is already in use'})
+
+        user.first_name = ""
+        user.last_name = ""
+        user.email = email
+        user.save()
+
+        profile = ProfileCompany(user=user, cedula=cedula, comercial_name=comercial_name)
+        profile.save()
+
+        return HttpResponseRedirect(reverse('home:login'))
+    return render(request, 'home/signup_company.html')

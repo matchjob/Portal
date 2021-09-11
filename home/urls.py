@@ -28,4 +28,9 @@ urlpatterns = [
         view=views.signup,
         name='signup'
     ),
+    path(
+        route='signup_company/',
+        view=views.signup_company,
+        name='signup_company'
+    ),
 ]

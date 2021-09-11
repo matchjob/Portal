@@ -1,11 +1,98 @@
- {% extends 'users/base.html' %}
-
+{% extends 'users/base.html' %}
+ {% load static %}
+ {% block title %} <span style="color: #7c9afb;">Match</span> <span style="color: #92fc69; margin-left: -10px;">Realizados</span> {% endblock%}   
  {% block container %}
- 
-    <div class="row my-3">
-        <div class="col-5 mx-auto">
-            <h1> Bienvenido a tus match Realizados {{ user.username }} </h1>
-        </div>
+<div class="row">
+    <div class="col-12 col-md-4 mx-auto py-3">
+        <div class="card mb-3" style="width:100%;">
+            <div class="row">
+              <div class="col-md-4 p-2 mx-auto text-center">
+                <img src="{% static 'images/tecnoteam.png' %}"  class="img-fluid rounded-start ">
+                <a href="#" >Mas sobre Tecno Team</a>
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title text-center">{{ Nombre_Empresa }}Tecno Team</h5>
+                  <p class="card-text">A {{nombre_empresa}}Tecno Team le gusta tu perfil y quiere contactarse contigo</p>
+
+                  <h6>Propuesta</h6>
+                  <li>Puesto: Front End</li>
+                  <li>Salario: $ 15,000mxn</li>
+                  <li>Home Office</li>      
+
+                  <h6>Entrevista</h6>
+                  <li>Cita: 9am</li>
+                  <li>Lugar: Remoto<a href="#"> ver</a> </li>     
+                  <br>         
+                  <p>Descripcion: Desarrollo de front end </p>
+                                  
+
+                  <div class="row">
+                    <div class="col-4 mx-auto">
+                        <a href="#" class="btn btn-success btn-sm"  data-bs-toggle="modal" data-bs-target="#ModalAceptar">Aceptar</a>
+                      </div>  
+                    <div class="col-4 mx-auto">
+                      <a href="#" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#ModalRechazar">Rechazar</a>
+                    </div>                      
+                </div>
+                  
+                  
+                </div>
+                <div class="card-footer text-muted">
+                    
+                    <div class="row">
+                        <div class="col-12 mx-auto">
+                            <p class="card-text"><small class="text-muted">Match realizado hace 15 minutos</small></p>
+                          </div>                      
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+
     </div>
+</div>
+
+<!-- Modal Aceptar-->
+<div class="modal fade" id="ModalAceptar" tabindex="-1" aria-labelledby="ModalAceptarLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="ModalAceptarLabel">Match Aceptado</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <p>¡Felicidades! usted ha aceptado contactarse con Tecno Team.</p>           
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Rechazar-->
+<div class="modal fade" id="ModalRechazar" tabindex="-1" aria-labelledby="ModalRechazarLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="ModalRechazarLabel">Match Rechazado</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="exampleFormControlTextarea1" class="form-label">¿Porque rechazo el match?</label>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" required></textarea>
+            </div>
+          </form>          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-danger">Rechazo el Match</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
  {% endblock%}  
