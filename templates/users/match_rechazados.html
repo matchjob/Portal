@@ -26,13 +26,19 @@
         <div class="card mb-3" style="width:100%;">
             <div class="row">
               <div class="col-md-4 p-2 mx-auto text-center">
-                <img src="{% static 'images/tecnoteam.png' %}"  class="img-fluid rounded-start ">
+                <img src="{% static 'images/cerbero_games.png' %}"  class="img-fluid rounded-start ">
                 
               </div>
               <div class="col-md-8">
                 <div class="card-body text-center">
-                  <h5 class="card-title text-center bg-danger text-white">{{ Nombre_Empresa }}Tecno Team</h5>
-                  <p class="card-text text-center">Se encontro otro candidato con un perfil mas adecuado para el puesto</p>
+                  <h5 class="card-title text-center bg-danger text-white">{{ Nombre_Empresa }}Cerbero Games</h5>
+                  <p class="card-text text-center">Se encontro otro candidato con un perfil mas adecuado para el puesto que va mas enfocado al desarrollo de videojuegos</p>
+                  <a href="#" >Mas sobre Cerbero Games</a>
+                </div>
+                <div class="row justify-content-end text-end">
+                  <div class="col-12 align-self-end offset-6">
+                    <a href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#ModalAceptar">¿Como conseguir puestos similares?</a>
+                  </div>                      
                 </div>
                 <div class="card-footer text-muted">
                     
@@ -48,47 +54,24 @@
 
     </div>
 </div>
-
 <!-- Modal Aceptar-->
 <div class="modal fade" id="ModalAceptar" tabindex="-1" aria-labelledby="ModalAceptarLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="ModalAceptarLabel">Match Aceptado</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            <p>¡Felicidades! usted ha aceptado contactarse con Tecno Team.</p>           
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-        </div>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="ModalAceptarLabel">¿Como conseguir puestos similares?</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <h6>Para conseguir este puesto o similares a este te sugerimos tomar los siguientes cursos:</h6>  
+          <li><a href="https://platzi.com/clases/assets-3d/" target="_blank" >Platzi: Curso de Assets 3D para Videojuegos</a></li>
+          <li><a href="https://platzi.com/clases/animacion-videojuegos/" target="_blank">Platzi:  Animación y Arte de Videojuegos 2D</a></li>
+          
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
       </div>
     </div>
   </div>
-
-  <!-- Modal Rechazar-->
-<div class="modal fade" id="ModalRechazar" tabindex="-1" aria-labelledby="ModalRechazarLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="ModalRechazarLabel">Match Declinado</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <form>
-            <div class="mb-3">
-              <label for="exampleFormControlTextarea1" class="form-label">¿Porque declino el match?</label>
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" required></textarea>
-            </div>
-          </form>          
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-warning">Declino el Match</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
+</div>
  {% endblock%}  
