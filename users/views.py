@@ -146,6 +146,46 @@ class UsersMatchPage(TemplateView):
         return args
 
 
+class UsersMatchPageAceptados(TemplateView):
+    """Pagina Principal"""
+    template_name = "users/match_aceptados.html"
+
+    def get_context_data(self, **kwargs):
+        """ context """
+        args = dict()
+        return args
+
+
+class UsersMatchPageDeclinados(TemplateView):
+    """Pagina Principal"""
+    template_name = "users/match_declinados.html"
+
+    def get_context_data(self, **kwargs):
+        """ context """
+        args = dict()
+        return args
+
+
+class UsersMatchPageRechazados(TemplateView):
+    """Pagina Principal"""
+    template_name = "users/match_rechazados.html"
+
+    def get_context_data(self, **kwargs):
+        """ context """
+        args = dict()
+        return args
+
+
+class UsersEvolutionPage(TemplateView):
+    """Pagina Principal"""
+    template_name = "users/crecimientos.html"
+
+    def get_context_data(self, **kwargs):
+        """ context """
+        args = dict()
+        return args
+
+
 class UsersTestPage(TemplateView):
     """Pagina Principal"""
     template_name = "users/test.html"

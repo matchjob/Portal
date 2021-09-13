@@ -31,9 +31,29 @@ urlpatterns = [
         name='UsersMatchPage'
     ),
     path(
+        route='UsersMatchPageAceptados',
+        view=views.UsersMatchPageAceptados.as_view(),
+        name='UsersMatchPageAceptados'
+    ),
+    path(
+        route='UsersMatchPageDeclinados',
+        view=views.UsersMatchPageDeclinados.as_view(),
+        name='UsersMatchPageDeclinados'
+    ),
+    path(
+        route='UsersMatchPageRechazados',
+        view=views.UsersMatchPageRechazados.as_view(),
+        name='UsersMatchPageRechazados'
+    ),
+    path(
         route='UsersTestPage',
         view=views.UsersTestPage.as_view(),
         name='UsersTestPage'
+    ),
+    path(
+        route='UsersEvolutionPage',
+        view=views.UsersEvolutionPage.as_view(),
+        name='UsersEvolutionPage'
     ),
     path(
         route='add_skill',

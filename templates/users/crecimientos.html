@@ -1,0 +1,51 @@
+{% extends 'users/base.html' %}
+ {% load static %}
+ {% block title %} <span style="color: #7c9afb;">Creci</span> <span style="color: #92fc69; margin-left: -10px;">miento</span> {% endblock%}   
+ {% block container %}
+<div class="row">
+    <div class="col-6 mx-auto py-3">
+      <div class="card">
+        <div class="card-header">
+          <h3>Tu perfil: Front End</h3> 
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Habilidades para reforzar tu perfil</h5>
+
+          <li class="card-text">Django: Avanzado </li>
+          <li class="card-text">HTML: Basico </li>
+
+          <div class="row justify-content-end text-end">
+            <div class="col-12 align-self-end offset-6">
+              <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalAceptar">¿Como superarme?</a>
+            </div>                      
+          </div>
+
+        </div>
+      </div>
+    </div>
+</div>
+
+<!-- Modal Aceptar-->
+<div class="modal fade" id="ModalAceptar" tabindex="-1" aria-labelledby="ModalAceptarLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="ModalAceptarLabel">¿Como Superarme?</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <h6>Para superarte puedes tomar los siguientes cursos:</h6>  
+            <li><a href="https://platzi.com/clases/html-css/" target="_blank" >Platzi: Clases del Curso Definitivo de HTML y CSS</a></li>
+            <li><a href="https://platzi.com/clases/html-css/" target="_blank">Platzi: Curso Avanzado de Django</a></li>
+            
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+ {% endblock%}  
