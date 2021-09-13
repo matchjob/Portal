@@ -7795,6 +7795,8 @@ textarea.form-control-lg {
 }
 
 .bg-primary {
+  background-image: url(fondo.png);
+  
   --bs-bg-opacity: 2;
   background-color: rgba(var(--bs-primary-rgb), var(--bs-bg-opacity)) !important;
 }
@@ -11433,6 +11435,7 @@ html {
 .masthead .masthead-subheading {
   
   font-size: 1.25rem;
+  background-image: url(fondo.png);
 }
 
 
