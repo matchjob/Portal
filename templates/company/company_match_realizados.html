@@ -1,11 +1,162 @@
-{% extends 'company/base_company.html' %}
-
+{% extends 'users/base.html' %}
+ {% load static %}
+ {% block title %} <span style="color: #7c9afb;">Match</span> <span style="color: #92fc69; margin-left: -10px;">Pendientes</span> {% endblock%}   
  {% block container %}
- 
-    <div class="row my-3">
-        <div class="col-5 mx-auto">
-            <h1> Bienvenido a tus match Realizados {{ user.username }} </h1>
-        </div>
+ <div class="row text-center">
+  <div class="col-3 mx-auto">
+      <a href="{% url 'company:CompanyMatchPage' %}" class="d-lg-none btn btn-primary btn-sm" >P <span class="badge bg-secondary">1</span></a>
+      <a href="{% url 'company:CompanyMatchPage' %}" class="d-none d-lg-block btn btn-primary btn-sm">Pendientes <span class="badge bg-secondary">1</span></a>      
+   </div>
+   <div class="col-3 mx-auto">
+    <a href="{% url 'company:CompanyMatchPageAceptados' %}" class="d-lg-none btn btn-success btn-sm" >A <span class="badge bg-secondary">1</span></a>
+    <a href="{% url 'company:CompanyMatchPageAceptados' %}" class="d-none d-lg-block btn btn-success btn-sm">Aceptados <span class="badge bg-secondary">1</span></a>
+   </div>
+   <div class="col-3 mx-auto ">
+    <a href="{% url 'company:CompanyMatchPageDeclinados' %}" class="d-lg-none btn btn-warning btn-sm" >D <span class="badge bg-secondary">1</span></a>
+    <a href="{% url 'company:CompanyMatchPageDeclinados' %}" class="d-none d-lg-block btn btn-warning btn-sm">Declinados <span class="badge bg-secondary">1</span></a>
+   </div>
+   <div class="col-3 mx-auto">
+    <a href="{% url 'company:CompanyMatchPageRechazados' %}" class="d-lg-none btn btn-danger btn-sm" >R <span class="badge bg-secondary">1</span></a>
+    <a href="{% url 'company:CompanyMatchPageRechazados' %}" class="d-none d-lg-block btn btn-danger btn-sm">Rechazados <span class="badge bg-secondary">1</span></a>
+   </div>
+ </div>
+<div class="row">
+  <div class="col-12 col-md-12">
+    <div class="row">
+      <div class="col-12 text-mja text-center mb-3">
+    
+
+      </div>
     </div>
+    <div class="row">
+
+      <div class="col-12 col-md-4 mx-auto">
+        <div class="card mb-3" style="width:100%;">
+          <div class="row">
+            <div class="col-md-4 p-2 mx-auto text-center">
+              <img src="{% static 'images/users/user_i.jpg' %}"  class="img-fluid rounded-start ">
+              <a href="#" >Mas sobre Denis Mata Gamez</a>
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title text-center">{{ Nombre_Empresa }}Denis Mata Gamez</h5>
+                <p class="card-text bg-warning text-dark">Pendiente de Respuesta</p>
+                <h6>Entrevista</h6>
+                <li>Cita: 9am</li>
+                <br>         
+                <p>Descripcion: Desarrollo de front end </p>
+                                
+
+                <div class="row">
+                  <div class="col-4 mx-auto">
+                      <a href="#" class="btn btn-success btn-sm"  data-bs-toggle="modal" data-bs-target="#ModalAceptar">Contratado</a>
+                    </div>  
+                  <div class="col-4 mx-auto">
+                    <a href="#" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#ModalRechazar">Declinar</a>
+                  </div>                      
+              </div>
+                
+                
+              </div>
+              <div class="card-footer text-muted">
+                  
+                  <div class="row">
+                      <div class="col-12 mx-auto">
+                          <p class="card-text"><small class="text-muted">Match realizado hace 15 minutos</small></p>
+                        </div>                      
+                  </div>
+                </div>
+            </div>
+          </div>
+      </div>
+      </div>
+
+      <div class="col-12 col-md-4 mx-auto">
+        <div class="card mb-3" style="width:100%;">
+          <div class="row">
+            <div class="col-md-4 p-2 mx-auto text-center">
+              <img src="{% static 'images/users/user_j.jpg' %}"  class="img-fluid rounded-start ">
+              <a href="#" >Mas sobre Rainer Candelaria Patino</a>
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title text-center">{{ Nombre_Empresa }}Rainer Candelaria Patino</h5>
+                <p class="card-text bg-success text-white">Entrevista Confirmada</p>
+                <h6>Entrevista</h6>
+                <li>Cita: 10am</li>
+                <br>         
+                <p>Descripcion: Desarrollo de front end </p>
+                                
+
+                <div class="row">
+                  <div class="col-4 mx-auto">
+                      <a href="#" class="btn btn-success btn-sm"  data-bs-toggle="modal" data-bs-target="#ModalAceptar">Contratado</a>
+                    </div>  
+                  <div class="col-4 mx-auto">
+                    <a href="#" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#ModalRechazar">Declinar</a>
+                  </div>                      
+              </div>
+                
+                
+              </div>
+              <div class="card-footer text-muted">
+                  
+                  <div class="row">
+                      <div class="col-12 mx-auto">
+                          <p class="card-text"><small class="text-muted">Match realizado hace 15 minutos</small></p>
+                        </div>                      
+                  </div>
+                </div>
+            </div>
+          </div>
+      </div>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+
+<!-- Modal Aceptar-->
+<div class="modal fade" id="ModalAceptar" tabindex="-1" aria-labelledby="ModalAceptarLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="ModalAceptarLabel">Match Aceptado</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <p>¡Felicidades! usted ha seleccionado a su candidato</p>           
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Rechazar-->
+<div class="modal fade" id="ModalRechazar" tabindex="-1" aria-labelledby="ModalRechazarLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="ModalRechazarLabel">Match Declinado</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="exampleFormControlTextarea1" class="form-label">¿Porque declino el match?</label>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" required></textarea>
+            </div>
+          </form>          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-warning">Declino el Match</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
  {% endblock%}  

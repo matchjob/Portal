@@ -65,7 +65,9 @@ def company_perfil_page(request):
 def company_new_match_page(request):
     """Pagina Principal"""
     if request.method == "POST":
-        area = request.POST()
+        dict_perfil = get_data_combos_profile(request.user.id)
+        dict_perfil['busqueda_realizada'] = 1
+        return render(request, 'company/company_new_match.html', dict_perfil)
     else:
         dict_perfil = get_data_combos_profile(request.user.id)
         return render(request, 'company/company_new_match.html', dict_perfil)
@@ -74,6 +76,36 @@ def company_new_match_page(request):
 class CompanyMatchPage(TemplateView):
     """Pagina Principal"""
     template_name = "company/company_match_realizados.html"
+
+    def get_context_data(self, **kwargs):
+        """ context """
+        args = dict()
+        return args
+
+
+class CompanyMatchPageAceptados(TemplateView):
+    """Pagina Principal"""
+    template_name = "company/company_match_aceptados.html"
+
+    def get_context_data(self, **kwargs):
+        """ context """
+        args = dict()
+        return args
+
+
+class CompanyMatchPageDeclinados(TemplateView):
+    """Pagina Principal"""
+    template_name = "company/company_match_declinados.html"
+
+    def get_context_data(self, **kwargs):
+        """ context """
+        args = dict()
+        return args
+
+
+class CompanyMatchPageRechazados(TemplateView):
+    """Pagina Principal"""
+    template_name = "company/company_match_rechazados.html"
 
     def get_context_data(self, **kwargs):
         """ context """

@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Match Job</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link rel="stylesheet" href="{% static 'home/index/css/styles.css' %}">
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+            <div class="container">
+                <img  src="{% static 'home/index/images/logo_match_job_manos.png' %}" alt="..." />
+                <a class="navbar-brand" href="#page-top">Match Job</a>
+                <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#nosotros"> Nosotros</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#solucion">Solución</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'home:login' %}">Acceder</a></li>
+                        <li class="nav-item mx-0 mx-lg-1 bg-primary text-dark"><a class="nav-link py-3 px-0 px-lg-3 rounded text-dark" href="{% url 'home:signup' %}">Crea una cuenta</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+      
+
+        <!-- Masthead-->
+        <header class="bg-primary text-white text-center">
+           
+            <div class="letrasarriba">
+                <img  src="{% static 'home/index/images/fondo.png' %}" style="height: 80vh; width: 100vw; ; object-fit: cover;"/>
+                <!-- Masthead Heading-->
+
+               <div class="letra"> <h1 >Simplificamos la manera de conectar talento experto con las mejores empresas</h1>
+                <a class="btn btn-primary btn-lg text-dark" href="{% url 'home:signup' %}" role="button">Crea una cuenta</a>
+            </div> 
+               
+                <!-- Icon Divider-->
+                <div class="divider-custom divider-light">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                    <div class="divider-custom-line"></div>
+                </div>
+                <!-- Masthead Subheading-->
+                <h5 class=" font-weight-light mb-5">  El empleo perfecto, la persona perfecta.</h5>
+            </div>
+        </header>
+
+        <!-- About Section-->
+        <section class="my-5" id="solucion">
+            <div class="container">
+                <!-- About Section Heading-->
+                <h2 class="text-center text-uppercase">Solución</h2>
+                <!-- Icon Divider-->
+                <div class="divider-custom divider">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                    <div class="divider-custom-line"></div>
+                </div>
+                <!-- About Section Content-->
+                <div >
+                    <h6 class="text-center">Match Job no es solo otra pagina de reclutamiento de personal, tampoco es una red social. <br> Match Job logro simplificar el proceso para que las mejores empresas a nivel mundial conecten con el mejor talento experto de Latino América haciendo crecer la economía de la región.
+                    </h6>
+                </div>
+
+                <div class="row my-2">
+                    <div class="col-12 border-bottom">
+                        <h2 class="text-center">
+                            Usuario
+                        </h2>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12 col-md-6 my-2">
+                        <h2 class="text-center">Perfil</h2>
+                        <p>Crea y agrega habilidades a tu perfil para recibir tips y recursos de como superarte y lograr que mas empresas se fijen en ti.</p>
+                    </div>
+
+                    <div class="col-12 col-md-6 my-2">
+                        <h2 class="text-center">Visibilidad</h2>
+                        <p>Una ves creado tu perfil empresas de todo el mundo tendran acceso a el incrementando en gran manera tus opciones de obtener el trabajo de tus sueños.</p>
+                    </div>
+
+                    <div class="col-12 col-md-6 my-2">
+                        <h2 class="text-center">Feedback</h2>
+                        <p>Siempre recibiras retroalimentación de las empresas en caso que no fueras aceptado y te brindaremos informacion sobre recursos que te ayudaran a mejorar tus habilidades en estas areas. </p>
+                    </div>
+
+                    <div class="col-12 col-md-6 my-2">
+                        <h2 class="text-center">Semillero de talento</h2>
+                        <p>Las mejores empresas te tendran en la mira mientras sigues estudiando y prodras aplicar a ellas en cualquier momento.</p>
+                    </div>
+
+                    <div class="col-12 col-md-6 my-2">
+                        <h2 class="text-center">Seguridad</h2>
+                        <p>Las empresas tendran reputacion puntuada lo que te protegera de publicidad engañosa y fraudes.</p>
+                    </div>
+
+                    <div class="col-12 col-md-6 my-2">
+                        <h2 class="text-center">Fexibilidad</h2>
+                        <p>¿Has pensado en cambiar de carrera pero no sabes por donde comenzar? ¡No te preocupes! Actualiza tu perfil con la nueva área que buscas y nos encargaremos de ayudarte a comenzar.</p>
+                    </div>
+
+                    <div class="col-12 col-md-12 my-2">
+                        <h2 class="text-center">Talento Experto</h2>
+                        <p>Creemos que el talento experto se encuentra en todas las personas y en todos los lugares,  por lo que rompemos con los estereotipos y prejuicios sociales, dando a todos las mismas oportunidades laborales. Solo nos importa una cosa. ¡Tu Talento! </p>
+                    </div>
+                </div>
+
+                <div class="row my-2">
+                    <div class="col-12 border-bottom border-top p-2">
+                        <h2 class="text-center">
+                            Empresa
+                        </h2>
+                        <p class="text-center">Una gran visión sin grandes personas es irrelevante --Jim Collins</p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12 col-md-6 my-2">
+                        <h2 class="text-center">Tiempo</h2>
+                        <p>Podras reducir hasta un 700% el tiempo de seleccion y reclutamieto personal.</p>
+                    </div>
+
+                    <div class="col-12 col-md-6 my-2">
+                        <h2 class="text-center">Certeza</h2>
+                        <p>Tendras la certeza de que encontraras al mejor postulante para el puesto que necesitas cubrir en tan solo 5 minutos.</p>
+                    </div>
+
+                    <div class="col-12 col-md-6 my-2">
+                        <h2 class="text-center">Feedback</h2>
+                        <p>Siempre recibiras retroalimentación de los postulantes que no aceptarón tu match y mejora la estructura de tus perfiles de puesto. </p>
+                    </div>
+
+                    <div class="col-12 col-md-6 my-2">
+                        <h2 class="text-center">Semillero de talento</h2>
+                        <p>Encuentra el mejor talento joven en cualquier parte de America Latina.</p>
+                    </div>
+
+                    <div class="col-12 col-md-6 my-2">
+                        <h2 class="text-center">Seguridad</h2>
+                        <p>Los postulantes tendran reputacion puntuada que podras visualizar desde antes de la entrevista lo que te evitara dolores de cabeza futuros.</p>
+                    </div>
+
+                    <div class="col-12 col-md-6 my-2">
+                        <h2 class="text-center">Información Centralizada</h2>
+                        <p>El portal te permitira concentrar y tener un seguimiento de los match realizados en ella, permitiendote agregar tanto un link para una video-entrevista, como un test de habilidades especiales.</p>
+                    </div>
+
+                </div>
+
+
+
+            </div>
+        </section>
+       <!-- Portfolio Section-->
+        <section class="portfolio bg-primary text-white my-5 " id="nosotros">
+            <div class="container mt-2">
+                <!-- Portfolio Section Heading-->
+                <h2 class="text-center text-uppercase pt-4">Conoce al equipo</h2>
+                <div class=" text-justify mt-4">
+                    <p> Hola somos Matchjob, un equipo de profesionales especializados en Desarrollo de aplicaciones web combinado con la experiencia en negocios, diseño de productos y captación de talento humano, trabajando en conjunto para conectar al mejor talento humano de Latinoamérica con las mejores empresas del mundo.
+                    </p>
+                </div>
+                <!-- Icon Divider-->
+                <div class="divider-custom divider-light">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                    <div class="divider-custom-line"></div>
+
+
+
+                </div>
+                <!-- Portfolio Grid Items-->
+                <div class="row justify-content-center tect-center">
+                    <!-- Portfolio Item 1-->
+                    <div class="col-5 mb-5">
+                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
+                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+                            </div>
+                            <img class="img-fluid" src="{% static 'home/index/images/adiran.png' %}" alt="..."  style="height: 200px; object-fit: cover"/>
+
+                            <p class="text-center">Adrian Castillo</p>
+                        </div>
+                    </div>
+                    <!-- Portfolio Item 2-->
+                    <div class="col-5 mb-5">
+                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal2">
+                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+                            </div>
+                            <img class="img-fluid" src="{% static 'home/index/images/alex.png' %}" alt="..." style="height: 200px; object-fit: cover;" />
+                            <p class="text-center">Alex Ortiz</p>
+                        </div>
+                    </div>
+                    <!-- Portfolio Item 3-->
+                    <div class="col-5 mb-5">
+                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal3">
+                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+                            </div>
+                            <img class="img-fluid" src="{% static 'home/index/images/manu.png' %}" alt="..." style="height: 200px; object-fit: cover"/>
+                            <p class="text-center">Manuela Escobar</p>
+                        </div>
+                    </div>
+                    <!-- Portfolio Item 4-->
+                    <div class="col-5 mb-5 mb-lg-0">
+                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal4">
+                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+                            </div>
+                            <img class="img-fluid" src="{% static 'home/index/images/vane.png' %}" alt="..." style="height: 200px; object-fit: cover" />
+                            <p class="text-center">Vanessa López </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!-- Footer-->
+        <footer class="footer text-center">
+            <div class="container">
+                <div class="row">
+                    <!-- Footer Location-->
+                    
+                    <!-- Footer Social Icons-->
+                    <div class="col-lg-4 mb-5 mb-lg-0">
+                        <h4 class="text-uppercase mb-4">Redes sociales</h4>
+                        <a class="btn btn-outline-light btn-social mx-1" href="https://www.facebook.com/Match-Job-112063460359638"><i class="fab fa-fw fa-facebook-f"></i></a>
+                      
+                    </div>
+                   
+                </div>
+            </div>
+        </footer>
+        <!-- Copyright Section-->
+        <div class="copyright py-4 text-center text-white">
+            <div class="container"><small>Copyright &copy; Match Job 2021</small></div>
+        </div>
+        <!-- Portfolio Modals-->
+        <!-- Portfolio Modal 1-->
+        <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" aria-labelledby="portfolioModal1" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
+                    <div class="modal-body text-center pb-5">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-8">
+                                    <!-- Portfolio Modal - Title-->
+                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Adrian Castillo</h2>
+                                    <!-- Icon Divider-->
+                                    <div class="divider-custom">
+                                        <div class="divider-custom-line"></div>
+                                        <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                                        <div class="divider-custom-line"></div>
+                                    </div>
+                                    <!-- Portfolio Modal - Image-->
+                                    <img class="img-fluid rounded mb-5" src="{% static 'home/index/images/adiran.png' %}" alt="..." />
+                                    <!-- Portfolio Modal - Text-->
+                                    <h2 class="mb-4"><font color="black">CEO y Co-fundador de MatchJob.
+                                    </font></h2>
+                                    <p class="mb-4"><font color="black">Siempre he buscado superarme intelectual y profesionalmente y me di cuenta de lo complicado que esto puede ser si no se tienen los contactos correctos y oportunidades adecuadas, por lo que decidí comenzar con match job y librarnos de esas complicaciones.</font></p>
+                                  
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Portfolio Modal 2-->
+        <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" aria-labelledby="portfolioModal2" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
+                    <div class="modal-body text-center pb-5">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-8">
+                                    <!-- Portfolio Modal - Title-->
+                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Alex Ortiz</h2>
+                                    <!-- Icon Divider-->
+                                    <div class="divider-custom">
+                                        <div class="divider-custom-line"></div>
+                                        <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                                        <div class="divider-custom-line"></div>
+                                    </div>
+                                    <!-- Portfolio Modal - Image-->
+                                    <img class="img-fluid rounded mb-5" src="{% static 'home/index/images/alex.png' %}" alt="..." />
+                                    <!-- Portfolio Modal - Text-->
+                                    <h2> <font color="black">Negocios Digitales y Diseño de Productos.</font></h2>
+                                    <p class="mb-4"><font color="black">Alex es un apasionado del emprendimiento digital, se unió al equipo de MatchJob para aportar sus ideas y experiencia en el desarrollo de aplicaciones web y negocios digitales.  Se podría describir a Alex como un padre dedicado y un entusiasta chef amateur.</font></p>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Portfolio Modal 3-->
+        <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" aria-labelledby="portfolioModal3" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
+                    <div class="modal-body text-center pb-5">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-8">
+                                    <!-- Portfolio Modal - Title-->
+                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Manuela Escobar </h2>
+                                    <!-- Icon Divider-->
+                                    <div class="divider-custom">
+                                        <div class="divider-custom-line"></div>
+                                        <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                                        <div class="divider-custom-line"></div>
+                                    </div>
+                                    <!-- Portfolio Modal - Image-->
+                                    <img class="img-fluid rounded mb-5" src="{% static 'home/index/images/manu.png' %} " alt="..." />
+                                    <!-- Portfolio Modal - Text-->
+                                    <h2 class="mb-4"><font color="black">Directora de Comuncación</font></h2>
+                                    <p class="mb-4"><font color="black">Administradora de empresas y especialista en talento humano.</font></p>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Portfolio Modal 4-->
+        <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" aria-labelledby="portfolioModal4" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
+                    <div class="modal-body text-center pb-5">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-8">
+                                    <!-- Portfolio Modal - Title-->
+                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Vanessa López </h2>
+                                    <!-- Icon Divider-->
+                                    <div class="divider-custom">
+                                        <div class="divider-custom-line"></div>
+                                        <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                                        <div class="divider-custom-line"></div>
+                                    </div>
+                                    <!-- Portfolio Modal - Image-->
+                                    <img class="img-fluid" src="{% static 'home/index/images/vane.png' %}" alt="..." />
+                                    <!-- Portfolio Modal - Text-->
+
+                                    <h2> <font color="black">Directora de Tecnología.</font></h2>
+                                    <p class="mb-4"> <font color="black">Ingeniera en sistemas computacionales, fanática del anime y la cultura asiática, se suma a Match Job con el objetivo de ayudar a facilitar el proceso de encontrar empleo, ya que por experiencia propia sabe lo complicado que puede llegar a ser la búsqueda de oportunidades laborales.</font></p>
+                                    
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+        
+        </div>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <!-- * *                               SB Forms JS                               * *-->
+        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    </body>
+</html>

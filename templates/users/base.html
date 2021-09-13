@@ -50,10 +50,12 @@
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
                 {% if user.profile %}
+                <li><a class="btn dropdown-item" type="button" href="{% url 'users:UsersHomePage' %}">Home</a></li>
                 <li><a class="btn dropdown-item" type="button" href="{% url 'users:UsersPerfilPage' %}">Perfil</a></li>
                 {% elif user.profilecompany %}
+                <li><a class="btn dropdown-item" type="button" href="{% url 'company:CompanyHomePage' %}">Home</a></li>
                 <li><a class="btn dropdown-item" type="button" href="{% url 'company:CompanyPerfilPage' %}">Perfil</a></li>
-                {% endif %}
+                {% endif %}             
                 <li><a class="btn dropdown-item" type="button" href="{% url 'home:logout' %}">Logout</a></li>
               </ul>
             </div>

@@ -30,6 +30,21 @@ urlpatterns = [
         view=views.CompanyMatchPage.as_view(),
         name='CompanyMatchPage'
     ),
+    path(
+        route='CompanyMatchPageAceptados',
+        view=views.CompanyMatchPageAceptados.as_view(),
+        name='CompanyMatchPageAceptados'
+    ),
+    path(
+        route='CompanyMatchPageDeclinados',
+        view=views.CompanyMatchPageDeclinados.as_view(),
+        name='CompanyMatchPageDeclinados'
+    ),
+    path(
+        route='CompanyMatchPageRechazados',
+        view=views.CompanyMatchPageRechazados.as_view(),
+        name='CompanyMatchPageRechazados'
+    ),
 
 
 ]

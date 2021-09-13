@@ -1,11 +1,11 @@
-{% extends 'company/base_company.html' %}
+{% extends 'users/base.html' %}
 {% load static %}
 {% block container %}
- <div class="row justify-content-center bg-light">
-    <div class="col-11  col-md-6 p-4 text-white bg-dark" id="profile-box">
+ <div class="row border-end border-dark">
+    <div class="col-12  col-md-2 border-end border-dark" id="profile-box">
       <div class="row">
         <div class="col-12">
-          <h1 class="text-mjv text-center">Busqueda</h1>
+          <h1 class="text-mja text-center">Busqueda</h1>
         </div>        
       </div>
         <form action="" method="POST" enctype="multipart/form-data">
@@ -17,8 +17,7 @@
 
             <div class="form-group">
                 <label>Area</label>
-                <select class="form-select" id="department" name="department" aria-label="Default select example">
-                    <option value="{{ user.profile.department.id }}" selected>{{ user.profile.department.name }}</option>
+                <select class="form-select" id="department" name="department" aria-label="Default select example">                    
                     {% for dp in Department %}
                     <option value="{{ dp.id }}">{{ dp.name}}</option>
                     {% endfor %}
@@ -28,19 +27,8 @@
             <div class="form-group">
               <label>Perfil</label>
               <select class="form-select" id="specialism" name="specialism" aria-label="Default select example">
-                  <option value="{{ user.profile.specialism.id }}" selected>{{ user.profile.specialism.name }}</option>
                   {% for sp in Specialism %}
                   <option value="{{ sp.id }}">{{ sp.name}}</option>
-                  {% endfor %}
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label>Pais</label>
-              <select class="form-select" id="country" name="country" aria-label="Default select example">
-                  <option value='{{ user.profile.country.id }}' selected>{{ user.profile.country.country }}</option>
-                  {% for cy in Country %}
-                  <option value="{{ cy.id}}">{{ cy.country}}</option>
                   {% endfor %}
               </select>
             </div>
@@ -48,44 +36,65 @@
               <label>Salario</label>
               <input type="number" class="form-control" id="current_salary" name="current_salary" value="{{ user.profile.current_salary }}"></input>
             </div>
-
             <div class="form-check form-switch">               
                 <input class="form-check-input" type="checkbox" id="currently_working" name="currently_working">
-                <label class="form-check-label" for="currently_working">currently_working</label>
+                <label class="form-check-label" for="currently_working">Trabaja Actualmente</label>
             </div>
               
             <div class="form-check form-switch">
                 <input class="form-check-input" type="checkbox" id="home_office" name="home_office">
-                <label class="form-check-label" for="home_office">home_office</label>
+                <label class="form-check-label" for="home_office">home Office</label>
             </div>
 
             <div class="form-check form-switch">
                 <input class="form-check-input" type="checkbox" id="freelancer" name="freelancer">
-                <label class="form-check-label" for="freelancer">freelancer</label>
+                <label class="form-check-label" for="freelancer">Freelancer</label>
             </div>
 
             <div class="form-check form-switch">
                 <input class="form-check-input" type="checkbox" id="residence_change" name="residence_change">
-                <label class="form-check-label" for="residence_change">residence_change</label>
+                <label class="form-check-label" for="residence_change">Cambio de Residencia</label>
             </div>
 
             <div class="form-check form-switch">
                 <input class="form-check-input" type="checkbox" id="remote_work" name="remote_work">
-                <label class="form-check-label" for="remote_work">remote_work</label>
+                <label class="form-check-label" for="remote_work">Trabajo Remoto</label>
             </div>
 
             <div class="form-check form-switch">
                 <input class="form-check-input" type="checkbox" id="to_travel" name="to_travel">
-                <label class="form-check-label" for="to_travel">to_travel</label>
+                <label class="form-check-label" for="to_travel">Debe Viajar</label>
             </div>
 
             <div class="form-check form-switch">
                 <input class="form-check-input" type="checkbox" id="nearby_search" name="nearby_search">
-                <label class="form-check-label" for="nearby_search">nearby_search</label>
+                <label class="form-check-label" for="nearby_search">Busqueda solo en mi zona</label>
             </div>
-        
-           
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" id="learns" name="learns">
+              <label class="form-check-label" for="learns">Becario / Practicante</label>
+          </div>
+          <div class="form-group mt-1">
+            <label>Fecha de la entrevista</label>
+            <input type="datetime-local" class="form-control" id="interview" name="interview" value="{{ user.profile.interview }}"></input>
+          </div>
 
+          <div class="form-group mt-1">
+            <label>Link de la videollamada (En caso de que la entrevista sea remota)</label>
+            <input type="url" class="form-control" id="interview_link" name="interview_link" value="{{ user.profile.interview_link }}"></input>
+          </div>
+
+          <div class="form-group mt-1">
+            <label>Link de Cuestionario (En caso de existir)</label>
+            <input type="url" class="form-control" id="personal_test" name="personal_test" value="{{ user.profile.personal_test }}"></input>
+          </div>
+
+          <div class="form-group">
+            <label>Información Adicional</label>
+            <textarea class="form-control" id="info" name="info">{{ user.profilecompany.info }}</textarea>
+        </div>
+
+        
             <div class="row">
                 <div class="col-12">
                     <h5> 
@@ -104,6 +113,8 @@
                 {% endfor %}
             </div>
 
+            <div id='skills_total' class="col"></div>
+
             <div class="row">
                 <div class="col-12">
                     <h5>
@@ -121,6 +132,8 @@
                 {% endfor %}
             </div>
 
+            <div id='soft_skills_total' class="col"></div>
+
             <div class="row">
                 <div class="col-12">
                     <h5> 
@@ -137,14 +150,322 @@
                 </div>
                 {% endfor %}
             </div>
+
+            <div id='languages_total' class="col"></div>
             
             <div class="row justify-content-end">
               <div class="col align-self-end offset-9">
-                <button type="submit" class="btn btn-outline-mja btn-block mt-5 ">Actualizar Perfil</button>
+                <button type="submit" class="btn btn-outline-mja btn-block mt-5 mb-4 ">Buscar</button>
               </div>
             </div>
+
+            
         </form>
     </div>
+    <div class="col-12 col-md-10">
+      <div class="row">
+        <div class="col-12 text-mja text-center mb-3">
+          <h1>Resultados</h1>
+
+        </div>
+      </div>
+      {% if busqueda_realizada %}
+      <div class="row">
+
+        <div class="col-12 col-md-4 mx-auto">
+          <div class="card" style="width:100%;">
+            <div class="row">
+              <div class="col-12 col-md-4 p-2 mx-auto text-center">
+                <img src="{% static 'images/users/user_a.jpg' %}"  class="img-fluid rounded-start "> <br>
+                <a href="#" >Mas sobre Corin Sauceda García</a>
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title text-center">{{ Nombre_Empresa }}Corin Sauceda García</h5>
+                  <div class="progress">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">Reputación 100%</div>
+                  </div>
+                  <p class="card-text">Corin Sauceda García Coincide con un <span class="fw-bold" >100% </span> de tus criterios de seleccion</p>
+    
+                  <h6>Habilidades Tecnicas</h6>
+                  <div class="progress">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
+                  </div>
+    
+                  <h6>Habilidades Blandas</h6>
+                  <div class="progress">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
+                  </div>
+    
+                  <h6>Idiomas</h6>
+                  <div class="progress">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
+                  </div>
+    
+                  <br>         
+    
+                                  
+    
+                  <div class="row" >
+                    <div class="col-12 d-grid mx-auto"  data-bs-toggle="tooltip" data-bs-placement="top" title="Al hacer match se agregara a match pendientes">
+                        <a href="#" class="btn btn-primary btn-sm"  data-bs-toggle="modal" data-bs-target="#ModalAceptar">Match</a>
+                      </div>                     
+                </div>
+                  
+                  
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-4 mx-auto">
+          <div class="card mb-3" style="width:100%;">
+            <div class="row">
+              <div class="col-12 col-md-4 p-2 mx-auto text-center">
+                <img src="{% static 'images/users/user_d.jpg' %}"  class="img-fluid rounded-start "> <br>
+                <a href="#">Mas sobre Adam Perales Rangel</a>
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title text-center">{{ Nombre_Empresa }}Adam Perales Rangel</h5>
+                  <div class="progress">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">Reputación 100%</div>
+                  </div>
+                  <p class="card-text">Adam Perales Rangel Coincide con un <span class="fw-bold" >100% </span> de tus criterios de seleccion</p>
+    
+                  <h6>Habilidades Tecnicas</h6>
+                  <div class="progress">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
+                  </div>
+    
+                  <h6>Habilidades Blandas</h6>
+                  <div class="progress">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
+                  </div>
+    
+                  <h6>Idiomas</h6>
+                  <div class="progress">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
+                  </div>
+    
+                  <br>         
+    
+                                  
+    
+                  <div class="row">
+                    <div class="col-12 d-grid mx-auto"  data-bs-toggle="tooltip" data-bs-placement="top" title="Al hacer match se agregara a match pendientes">
+                        <a href="#" class="btn btn-primary btn-sm"  data-bs-toggle="modal" data-bs-target="#ModalAceptar">Match</a>
+                      </div>                    
+                </div>
+                  
+                  
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-4 mx-auto">
+          <div class="card" style="width:100%;">
+            <div class="row">
+              <div class="col-12 col-md-4 p-2 mx-auto text-center">
+                <img src="{% static 'images/users/user_b.jpg' %}"  class="img-fluid rounded-start "><br>
+                <a href="#"  >Mas sobre Ada Fonseca Prado</a>
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title text-center">{{ Nombre_Empresa }}Ada Fonseca Prado</h5>
+                  <div class="progress">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">Reputación 100%</div>
+                  </div>
+                  <p class="card-text">Ada Fonseca Prado Coincide con un <span class="fw-bold" >96% </span> de tus criterios de seleccion</p>
+    
+                  <h6>Habilidades Tecnicas</h6>
+                  <div class="progress">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
+                  </div>
+    
+                  <h6>Habilidades Blandas</h6>
+                  <div class="progress">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 96%" aria-valuenow="96" aria-valuemin="0" aria-valuemax="96">96%</div>
+                  </div>
+    
+                  <h6>Idiomas</h6>
+                  <div class="progress">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
+                  </div>
+    
+                  <br>         
+    
+                                  
+    
+                  <div class="row">
+                    <div class="col-12 d-grid mx-auto"  data-bs-toggle="tooltip" data-bs-placement="top" title="Al hacer match se agregara a match pendientes">
+                        <a href="#" class="btn btn-primary btn-sm"  data-bs-toggle="modal" data-bs-target="#ModalAceptar">Match</a>
+                      </div>                  
+                </div>
+                  
+                  
+                </div>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-4 mx-auto">
+          <div class="card" style="width:100%;">
+            <div class="row">
+              <div class="col-12 col-md-4 p-2 mx-auto text-center">
+                <img src="{% static 'images/users/user_f.jpg' %}"  class="img-fluid rounded-start "> <br>
+                <a href="#">Mas sobre Cristian Mateo Hernandes</a>
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title text-center">{{ Nombre_Empresa }}Cristian Mateo Hernandes</h5>
+                  <div class="progress">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">Reputación 100%</div>
+                  </div>
+                  <p class="card-text">Cristian Mateo Hernandes Coincide con un <span class="fw-bold" >96% </span> de tus criterios de seleccion</p>
+    
+                  <h6>Habilidades Tecnicas</h6>
+                  <div class="progress">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
+                  </div>
+    
+                  <h6>Habilidades Blandas</h6>
+                  <div class="progress">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 96%" aria-valuenow="96" aria-valuemin="0" aria-valuemax="96">96%</div>
+                  </div>
+    
+                  <h6>Idiomas</h6>
+                  <div class="progress">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
+                  </div>
+    
+                  <br>         
+    
+                                  
+    
+                  <div class="row">
+                    <div class="col-12 d-grid mx-auto"  data-bs-toggle="tooltip" data-bs-placement="top" title="Al hacer match se agregara a match pendientes">
+                        <a href="#" class="btn btn-primary btn-sm"  data-bs-toggle="modal" data-bs-target="#ModalAceptar">Match</a>
+                      </div>                      
+                </div>
+                  
+                  
+                </div>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-4 mx-auto">
+          <div class="card" style="width:100%;">
+            <div class="row">
+              <div class="col-12 col-md-4 p-2 mx-auto text-center">
+                <img src="{% static 'images/users/user_g.jpg' %}"  class="img-fluid rounded-start "> <br>
+                <a href="#"   >Mas sobre Eric Leyva Palacios</a>
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title text-center">{{ Nombre_Empresa }}Eric Leyva Palacios</h5>
+                  <div class="progress">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">Reputación 100%</div>
+                  </div>
+                  <p class="card-text">Eric Leyva Palacios Coincide con un <span class="fw-bold" >96% </span> de tus criterios de seleccion</p>
+    
+                  <h6>Habilidades Tecnicas</h6>
+                  <div class="progress">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
+                  </div>
+    
+                  <h6>Habilidades Blandas</h6>
+                  <div class="progress">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 96%" aria-valuenow="96" aria-valuemin="0" aria-valuemax="96">96%</div>
+                  </div>
+    
+                  <h6>Idiomas</h6>
+                  <div class="progress">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
+                  </div>
+    
+                  <br>         
+    
+                                  
+    
+                  <div class="row">
+                    <div class="col-12 d-grid mx-auto"  data-bs-toggle="tooltip" data-bs-placement="top" title="Al hacer match se agregara a match pendientes">
+                        <a href="#" class="btn btn-primary btn-sm"  data-bs-toggle="modal" data-bs-target="#ModalAceptar">Match</a>
+                      </div>  
+                   
+                </div>
+                  
+                  
+                </div>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-4 mx-auto">
+          <div class="card" style="width:100%;">
+            <div class="row">
+              <div class="col-12 col-md-4 p-2 mx-auto text-center">
+                <img src="{% static 'images/users/user_h.jpg' %}"  class="img-fluid rounded-start "> <br>
+                <a href="#"   >Mas sobre Morgan Granados Pichardo</a>
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title text-center">{{ Nombre_Empresa }}Morgan Granados Pichardo</h5>
+                  <div class="progress">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">Reputación 100%</div>
+                  </div>
+                  <p class="card-text">Morgan Granados Pichardo Coincide con un <span class="fw-bold" >93% </span> de tus criterios de seleccion</p>
+    
+                  <h6>Habilidades Tecnicas</h6>
+                  <div class="progress">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
+                  </div>
+    
+                  <h6>Habilidades Blandas</h6>
+                  <div class="progress">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="80">80%</div>
+                  </div>
+    
+                  <h6>Idiomas</h6>
+                  <div class="progress">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
+                  </div>
+    
+                  <br>         
+    
+                                  
+    
+                  <div class="row">
+                    <div class="col-12 d-grid mx-auto"  data-bs-toggle="tooltip" data-bs-placement="top" title="Al hacer match se agregara a match pendientes">
+                        <a href="#" class="btn btn-primary btn-sm"  data-bs-toggle="modal" data-bs-target="#ModalAceptar">Match</a>
+                      </div>                      
+                </div>
+                  
+                  
+                </div>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      {% endif %}
+    </div>
+
+
 </div>
 
 
@@ -248,130 +569,101 @@
     </div>
   </div>
 
+
+  <div class="modal fade" id="ModalAceptar" tabindex="-1" aria-labelledby="ModalAceptarLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="ModalAceptarLabel">Match Aceptado</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <h6>Se agrego a tus Match Pendientes</h6>  <br>
+            
+            <p>Se le ha notificado al usuario que su perfil te interesa, te notificaremos en cuanto el usuario acepte o rechaze el match. </p>
+        
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 <script>
-    function get_cordenates(){
-        document.getElementById("ubicacion_obtenida").style.display = "none";
-        var lat;
-        var lon;
-        var options = {
-              enableHighAccuracy: true,
-              timeout: 5000,
-              maximumAge: 0
-            };
-        function success(position) {
-          lat = position.coords.latitude;
-          lon = position.coords.longitude;
-          var map_url = "https://www.google.com.mx/maps/@" + lat + "," + lon + "z";
-          document.getElementById('lat').value = lat;
-          document.getElementById('lon').value = lon;
-          document.getElementById("ubicacion_obtenida").style.display = "block";
-          document.getElementById("ubicacion_obtenida_text").innerHTML = 'Zona Actualizada';
-          document.getElementById('output').removeAttribute('href');
-          document.getElementById('output').setAttribute('href', map_url);
-        };
-
-        function error(err) {
-          console.warn('ERROR(' + err.code + '): ' + err.message);
-        };
-
-        navigator.geolocation.getCurrentPosition(success, error, options);     
-    }
 
     function add_skill() {
+      load_page_start();
         /*Llama al servicio desde Ajax*/
         const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
         var headers_data = {'X-CSRFToken': csrftoken};
         var url = "/users/add_skill" ;        
         var skill=document.getElementsByName("skill")[0].value;  
-        var skill_level=document.getElementsByName("skill_level")[0].value;        
+        var skill_level=document.getElementById("skill_level");        
+        var selected = skill_level.options[skill_level.selectedIndex].text;
         document.getElementById('add_skill_btn').style.display = 'none';
+        
 
         if (skill != "" & skill_level != "Nivel") {
-          $.ajax({
-            type: "POST",
-            url: url,
-            headers: headers_data,
-            data: $("#form_add_skill").serialize(),
-            success: function(data)
-                {
-                location.reload();
-                load_page_finish();
-                },
-            error: function (error) {
-              load_page_finish();
-              document.getElementById('add_skill_btn').style.display = 'block';
-            }
-          });
+          var actual_data = document.getElementById("skills_total").innerHTML;
+          document.getElementById("skills_total").innerHTML = actual_data + '<li>' + skill + ': ' +  selected +' </li>';
+         
+          document.getElementById('add_skill_btn').style.display = 'block';
         }
         else {
             document.getElementById('add_skill_btn').style.display = 'block';
             $(".loader-page").css({visibility:"hidden",opacity:"0"});
             alert( "Es necesario llenar todos los campos" );
-        }        
+        }   
+        load_page_finish();     
     };
 
     function add_soft_skill() {
+      load_page_start();
         /*Llama al servicio desde Ajax*/
         const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
         var headers_data = {'X-CSRFToken': csrftoken};
         var url = "/users/add_soft_skill" ;        
         var soft_skill=document.getElementsByName("soft_skill")[0].value;  
-        var soft_skill_level=document.getElementsByName("soft_skill_level")[0].value;        
+        var soft_skill_level=document.getElementById("soft_skill_level");    
+        var selected = soft_skill_level.options[soft_skill_level.selectedIndex].text;    
         document.getElementById('add_soft_skill_btn').style.display = 'none';
 
         if (soft_skill != "" & soft_skill_level != "Nivel") {
-          $.ajax({
-            type: "POST",
-            url: url,
-            headers: headers_data,
-            data: $("#form_add_soft_skill").serialize(),
-            success: function(data)
-                {
-                location.reload();
-                load_page_finish();
-                },
-            error: function (error) {
-              load_page_finish();
-            }
-          });
+          var actual_data = document.getElementById("soft_skills_total").innerHTML;
+          document.getElementById("soft_skills_total").innerHTML = actual_data + '<li>' + soft_skill + ': ' +  selected +' </li>';
+          document.getElementById('add_soft_skill_btn').style.display = 'block';
         }
         else {
             document.getElementById('add_soft_skill_btn').style.display = 'block';
             $(".loader-page").css({visibility:"hidden",opacity:"0"});
             alert( "Es necesario llenar todos los campos" );
-        }        
+        }   
+        load_page_finish();     
     };
 
     function add_language() {
         /*Llama al servicio desde Ajax*/
+        load_page_start();
         const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
         var headers_data = {'X-CSRFToken': csrftoken};
         var url = "/users/add_language" ;        
         var language=document.getElementsByName("language")[0].value;  
-        var language_level=document.getElementsByName("language_level")[0].value;        
+        var language_level=document.getElementById("language_level");   
+        var selected = language_level.options[language_level.selectedIndex].text;       
         document.getElementById('add_language_btn').style.display = 'none';
 
         if (language != "" & language_level != "Nivel") {
-          $.ajax({
-            type: "POST",
-            url: url,
-            headers: headers_data,
-            data: $("#form_add_language").serialize(),
-            success: function(data)
-                {
-                location.reload();
-                load_page_finish();
-                },
-            error: function (error) {
-              load_page_finish();
-            }
-          });
+          var actual_data = document.getElementById("languages_total").innerHTML;
+          document.getElementById("languages_total").innerHTML = actual_data + '<li>' + language + ': ' +  selected +' </li>';
+          document.getElementById('add_language_btn').style.display = 'block';
         }
         else {
             document.getElementById('add_language_btn').style.display = 'block';
             $(".loader-page").css({visibility:"hidden",opacity:"0"});
             alert( "Es necesario llenar todos los campos" );
         }        
+        load_page_finish();     
     };
 
 </script>

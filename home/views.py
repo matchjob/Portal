@@ -46,7 +46,7 @@ def home_login(request):
 
 class HomePage(TemplateView):
     """Pagina Principal"""
-    template_name = "home/principal.html"
+    template_name = "home/index.html"
 
     def get_context_data(self, **kwargs):
         """ get context """
